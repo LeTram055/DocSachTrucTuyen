@@ -33,7 +33,7 @@ if (session_status() === PHP_SESSION_NONE) {
 
 </head>
 
-<body>
+<body class="d-flex flex-column min-vh-100">
     <div class="container-fluid header">
         <nav class="navbar navbar-expand-lg">
             <div class="container-fluid">
@@ -76,7 +76,7 @@ if (session_status() === PHP_SESSION_NONE) {
                     </ul>
 
 
-                    <form class="d-flex mx-3" role="search" method="GET" action="search_book.php">
+                    <form class="d-flex mx-3" role="search" method="GET" action="search.php">
                         <input id="search" class="form-control me-2" type="search" placeholder="Bạn đang tìm gì?"
                             aria-label="Search" name="search" />
                         <button class="btn btn-outline-light" type="submit">Tìm</button>

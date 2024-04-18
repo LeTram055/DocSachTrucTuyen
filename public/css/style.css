@@ -81,11 +81,22 @@
 }
 
 .book-image {
-    width: 100%;
+    width: 260px;
     height: 320px;
 
 }
 
+.image-wrapper {
+    position: relative;
+    width: 100%;
+}
+
+.image-wrapper img {
+    width: 100%;
+    display: block;
+    object-fit: cover; /* Đảm bảo hình ảnh không bị biến dạng */
+    padding-bottom: 133.33%; /* 4/3 * 100% */
+}
 
 .book-item:hover {
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.582); 
@@ -99,4 +110,16 @@
     overflow: hidden; 
     text-overflow: ellipsis; 
     white-space: nowrap; 
+}
+
+/*detail_book*/
+.detail-book-name {
+    color: #2c00bf;
+    font-weight: 500;
+}
+
+.detail-book-image {
+    width: 300px;
+    height: 400px;
+    border: #2c00bf solid;
 }
