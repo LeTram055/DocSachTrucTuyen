@@ -3,7 +3,7 @@ require_once __DIR__ . '/../src/connect.php';
 require_once __DIR__ . '/../vendor/autoload.php'; // Đường dẫn tới autoload.php của thư viện PhpSpreadsheet
 
 // Mảng chứa các loại sản phẩm
-$sql_genre = "SELECT * FROM genre";
+$sql_genre = "SELECT name_genre FROM genre";
 $stmt_genre = $pdo->prepare($sql_genre);
 $stmt_genre->execute();
 $genres = $stmt_genre->fetchAll(PDO::FETCH_ASSOC);
@@ -48,22 +48,22 @@ include_once __DIR__. '/../src/partials/header.php'
 
     <?php foreach ($genres as $genre) : ?>
     <?php
-    $sql = "SELECT name_book, image 
-            FROM book b
+    $sql = "SELECT name_book, image, id_book
+            FROM book
             WHERE id_genre = (SELECT id_genre FROM genre WHERE name_genre = ?)
             LIMIT 4";
     $stmt = $pdo->prepare($sql);
-    $stmt->execute([$genre]);
+    $stmt->execute([$genre['name_genre']]);
     $books = $stmt->fetchAll(PDO::FETCH_ASSOC);
     ?>
 
     <div class="row my-5">
         <div class="row">
             <div class="col-6">
-                <h2><?= mb_strtoupper($genre) ?></h2>
+                <h2><?= mb_strtoupper($genre['name_genre']) ?></h2>
             </div>
             <div class="col-6 text-end">
-                <a href="book.php?name_genre=<?= urlencode($genre) ?>" class="link">Xem tất cả sản phẩm</a>
+                <a href="book.php?name_genre=<?= urlencode($genre['name_genre']) ?>" class="link">Xem tất cả sách</a>
             </div>
         </div>
         <hr class="line">
@@ -72,7 +72,8 @@ include_once __DIR__. '/../src/partials/header.php'
             <div class="col-md-3 col-sm-6">
                 <a href="detail_book.php?id_book=<?= $book['id_book'] ?>" class="book-link">
                     <div class="book-item">
-                        <img src="<?= $book['image'] ?>" alt="<?= html_escape($book['name_book']) ?>" class="img-fluid">
+                        <img src="<?= $book['image'] ?>" alt="<?= html_escape($book['name_book']) ?>"
+                            class="img-fluid book-image">
                         <h5><?= html_escape($book['name_book']) ?></h5>
                     </div>
                 </a>
