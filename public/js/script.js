@@ -1,0 +1,23 @@
+// favorite.js
+
+$(document).ready(function() {
+    $('#favoriteBtn').on('click', function(event) {
+        event.preventDefault(); // Ngăn chặn hành động mặc định của nút
+        
+        var id_book = $('#id_book').val();
+        
+        // Gửi yêu cầu AJAX để thêm hoặc xóa yêu thích
+        $.ajax({
+            type: "POST",
+            url: "toggle_favorite.php",
+            data: { id_book: id_book },
+            success: function(response) {
+                if (response === 'added') {
+                    $("#favoriteIcon").removeClass("far").addClass("fas");
+                } else if (response === 'removed') {
+                    $("#favoriteIcon").removeClass("fas").addClass("far");
+                }
+            }
+        });
+    });
+});

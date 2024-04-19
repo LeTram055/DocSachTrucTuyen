@@ -123,3 +123,15 @@
     height: 400px;
     border: #2c00bf solid;
 }
+
+.favorite-btn {
+        background: none;
+        border: red solid;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+
+.favorite-icon {
+    color: red;
+    font-size: 30px; 
+}

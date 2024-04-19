@@ -7,7 +7,7 @@ use readbook;
 CREATE TABLE `user` (
   `email` varchar(100) NOT NULL,
   `fullname` varchar(50) NOT NULL,
-  `password` varchar(30) NOT NULL,
+  `password` varchar(100) NOT NULL,
   `role` varchar(10) NOT NULL,
   primary key (`email`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
@@ -31,7 +31,7 @@ CREATE TABLE `book` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 CREATE TABLE `readingHistory` (
-  `date_rading` date NOT NULL,
+  `date_reading` date NOT NULL,
   `email` varchar(100) NOT NULL,
   `id_book` varchar(10) NOT NULL,
   foreign key (`email`) references `user` (`email`),
@@ -58,8 +58,8 @@ CREATE TABLE `review` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 INSERT INTO `user` (`email`, `fullname`, `password`, `role`) VALUES
-("admin123@gmail.com", "admin", "$2y$10$8xl4o3nN2WIr592xOvGzNewv3fcDhU2c.ZW2KpOpAUhIj3U2thyDy", "admin"),
-("tramle055@gmail.com", "Lê Trâm", "$2y$10$UM.79OYj49RUz3aFxk4.qOrmCGkdDPI5LuEZHWjotPbOxF4T9JSl.","");
+("admin123@gmail.com", "admin", "$2y$10$wMDqe4CymdiP1A6UgQwiY.1rbXfM5Zb7/pGUWWHKNuqWKntZL0O3a", "admin"),
+("tramle055@gmail.com", "Lê Thị Ngọc Trâm", "$2y$10$cXHk.nfnAe4QnAL3Q3a7JeyYefPdppTZE.FaPjiZC5Q0r7axJPja2","");
 
 INSERT INTO `genre` (`id_genre`, `name_genre`) VALUES
 ("l001", "Ẩm thực - Nấu ăn"),

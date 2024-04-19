@@ -6,24 +6,27 @@ $error_message = '';
 
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    $email = $_POST['email'];
+    $password = $_POST['password'];
     // Kiểm tra xem có tồn tại email và password không
     if (!empty($_POST['email']) && !empty($_POST['password'])) {
         
         // Kiểm tra thông tin đăng nhập
         $stmt = $pdo->prepare("SELECT * FROM user WHERE email = ?");
-        $stmt->execute([$_POST['email']]);
+        $stmt->execute([$email]);
         $user = $stmt->fetch(PDO::FETCH_ASSOC);
 
         if ($user) {
-            if(password_verify($_POST['password'], $user['matkhau'])) {
+            if(password_verify($password, $user['password'])) {
                 $_SESSION['user'] = [];
                 // Đăng nhập thành công
-                $_SESSION['user']['email'] = $_POST['email'];
-                $_SESSION['user']['role'] = $user['quyennd'];
+                $_SESSION['user']['email'] = $user['email'];
+                $_SESSION['user']['role'] = $user['role'];
+
                 
                 if(isset($_SESSION['user']['role']) && $_SESSION['user']['role'] == 'admin') {
                     
-                    redirect('index_admin.php.php');
+                    redirect('index_admin.php');
                 } else {
                     redirect('index.php');
                 }
@@ -52,7 +55,7 @@ include_once __DIR__. '/../src/partials/header.php'
     <div class="row justify-content-center">
         <div class="col-lg-6">
             <h2 class="text-center my-4">ĐĂNG NHẬP</h2>
-            <form method="post" action="login.php" enctype="multipart/form-data">
+            <form method="post" enctype="multipart/form-data">
 
                 <div class="mb-3">
                     <label for="email" class="form-label">Email</label>
