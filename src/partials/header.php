@@ -36,7 +36,7 @@ if (session_status() === PHP_SESSION_NONE) {
 <body class="d-flex flex-column min-vh-100">
     <div class="container-fluid header">
         <nav class="navbar navbar-expand-lg">
-            <div class="container-fluid">
+            <div class=" container-fluid">
                 <a href="index.php"><img id="logo" src="images/logo.png" height="70px" /></a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                     data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
@@ -76,42 +76,39 @@ if (session_status() === PHP_SESSION_NONE) {
                     </ul>
 
 
-                    <form class="d-flex mx-3" role="search" method="GET" action="search.php">
+                    <form class="d-flex mx-3 my-2" role="search" method="GET" action="search.php">
                         <input id="search" class="form-control me-2" type="search" placeholder="Bạn đang tìm gì?"
                             aria-label="Search" name="search" />
                         <button class="btn btn-outline-light" type="submit">Tìm</button>
                     </form>
 
-                    <div class="nav-item dropdown mx-3">
-                        <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button"
-                            aria-expanded="false"><i class="fa-solid fa-user"></i></a>
+                    <div class="d-flex my-2">
                         <?php if(isset($_SESSION['user']['email'])): ?>
 
-                        <ul class="dropdown-menu dropdown-menu-end">
-                            <li><a class="dropdown-item" href="info_user.php">Thông tin</a></li>
-                            <li><a class="dropdown-item" href="logout.php">Đăng xuất</a></li>
-                        </ul>
+                        <?php 
+                            // Xử lý chuỗi email để chỉ hiển thị phần trước dấu @
+                            $fullnameParts = explode(' ', $_SESSION['user']['fullname']);
+                            $lastname = end($fullnameParts);
+                        ?>
+                        <a class="btn btn-success me-2 fixed-size-button" href="info_user.php"> <i
+                                class="fa-regular fa-user"></i> <?= $lastname ?></a>
+                        <a class="btn btn-secondary fixed-size-button" href="logout.php">Đăng xuất</a>
 
                         <?php else: ?>
-
-                        <ul class="dropdown-menu dropdown-menu-end">
-                            <li><a class="dropdown-item" href="register.php">Đăng ký</a></li>
-                            <li><a class="dropdown-item" href="login.php">Đăng nhập</a></li>
-                        </ul>
+                        <a class="btn btn btn-success me-2" href="login.php">Đăng nhập</a>
+                        <a class="btn btn-secondary" href="register.php">Đăng ký</a>
                         <?php endif; ?>
-
                     </div>
 
-                    <div class="icon-header">
-                        <a href="cart.php" class="text-white"><i class="fa fa-shopping-cart"></i></a>
 
-                        <span id="count_book_header">
 
-                            <?php if (isset($_SESSION['cart'])) {echo count($_SESSION['cart']);} else {echo "0";}?>
-                        </span>
-                    </div>
+
+
 
                 </div>
+
+
             </div>
-        </nav>
+    </div>
+    </nav>
     </div>

@@ -42,8 +42,8 @@ if (isset($_GET['search'])) {
 include_once __DIR__. '/../src/partials/header.php';
 ?>
 
-<div class="container">
-    <div class="row m-5">
+<div class="container flex-grow-1">
+    <div class="row my-5">
         <h2 class="text-center mb-5"> KẾT QUẢ TÌM KIẾM SẢN PHẨM VỚI TỪ KHÓA "<?= $search_term ?>"</h2>
         <div class="row">
             <div class="dropdown">
@@ -73,7 +73,8 @@ include_once __DIR__. '/../src/partials/header.php';
             <?php endforeach ?>
         </div>
     </div>
+</div>
 
-    <?php
+<?php
 include_once __DIR__. '/../src/partials/footer.php'
 ?>

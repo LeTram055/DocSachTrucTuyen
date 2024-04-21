@@ -32,9 +32,7 @@ if (isset($_SESSION['user'])&& isset($_SESSION['user']['email']) && isset($_POST
     }
 } else {
     // Người dùng chưa đăng nhập
-    echo '<script>
-            alert("Vui lòng đăng nhập để thêm vào yêu thích.");
-            window.history.back();
-        </script>';
+    echo "not_login";
+    
 }
 ?>

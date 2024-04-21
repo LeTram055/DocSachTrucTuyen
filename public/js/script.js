@@ -12,12 +12,20 @@ $(document).ready(function() {
             url: "toggle_favorite.php",
             data: { id_book: id_book },
             success: function(response) {
-                if (response === 'added') {
-                    $("#favoriteIcon").removeClass("far").addClass("fas");
-                } else if (response === 'removed') {
-                    $("#favoriteIcon").removeClass("fas").addClass("far");
+                if (response === 'not_login') {
+                    // Hiển thị thông báo nếu người dùng chưa đăng nhập
+                    alert("Vui lòng đăng nhập để thêm vào yêu thích.");
+                    
+                } else {
+                    if (response === 'added') {
+                        $("#favoriteIcon").removeClass("far").addClass("fas");
+                    } else if (response === 'removed') {
+                        $("#favoriteIcon").removeClass("fas").addClass("far");
+                    }
                 }
             }
+            
         });
     });
 });
+
