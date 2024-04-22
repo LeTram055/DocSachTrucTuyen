@@ -37,7 +37,7 @@ if (session_status() === PHP_SESSION_NONE) {
     <div class="container-fluid header">
         <nav class="navbar navbar-expand-lg">
             <div class=" container-fluid">
-                <a href="index.php"><img id="logo" src="images/logo.png" height="70px" /></a>
+                <a href="index.php"><img id="logo" src="images/logo.png" height="60px" /></a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                     data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
                     aria-expanded="false" aria-label="Toggle navigation">
@@ -83,7 +83,7 @@ if (session_status() === PHP_SESSION_NONE) {
                         <?php if(isset($_SESSION['user']['email'])): ?>
 
                         <?php 
-                            // Xử lý chuỗi email để chỉ hiển thị phần trước dấu @
+                            
                             $fullnameParts = explode(' ', $_SESSION['user']['fullname']);
                             $lastname = end($fullnameParts);
                         ?>
@@ -97,15 +97,10 @@ if (session_status() === PHP_SESSION_NONE) {
                         <?php endif; ?>
                     </div>
 
-
-
-
-
-
                 </div>
 
-
             </div>
+        </nav>
     </div>
-    </nav>
+
     </div>

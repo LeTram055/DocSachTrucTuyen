@@ -26,7 +26,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 
                 if(isset($_SESSION['user']['role']) && $_SESSION['user']['role'] == 'admin') {
                     
-                    redirect('index_admin.php');
+                    redirect('index_ad.php');
                 } else {
                     redirect('index.php');
                 }
