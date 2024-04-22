@@ -40,7 +40,7 @@ include_once __DIR__. '/../src/partials/header.php'
 
         <div class="row">
             <div class="col-2">
-                <ul class="list-group list-group-flush">
+                <ul class="list-group list-group-flush  border rounded-2">
                     <li class="list-group-item p-2 <?php echo $type === 'read' ? 'selected' : ''; ?>"><a
                             href="?type=read" class="link"><i class="fa-solid fa-heart"></i> Sách đã đọc</a></li>
                     <li class="list-group-item p-2 <?php echo $type === 'favourite' ? 'selected' : ''; ?>"><a
