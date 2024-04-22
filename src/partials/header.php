@@ -67,10 +67,7 @@ if (session_status() === PHP_SESSION_NONE) {
                         </li>
 
                         <li class="nav-item">
-                            <a class="nav-link active text-reset" href="faq.php">Hỏi đáp</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link active text-reset" href="contact.php">Liên hệ</a>
+                            <a class="nav-link active text-reset" href="introduce.php">Giới thiệu</a>
                         </li>
 
                     </ul>
@@ -90,13 +87,13 @@ if (session_status() === PHP_SESSION_NONE) {
                             $fullnameParts = explode(' ', $_SESSION['user']['fullname']);
                             $lastname = end($fullnameParts);
                         ?>
-                        <a class="btn btn-success me-2 fixed-size-button" href="info_user.php"> <i
+                        <a class="btn btn-success me-2 header-button" href="info_user.php"> <i
                                 class="fa-regular fa-user"></i> <?= $lastname ?></a>
-                        <a class="btn btn-secondary fixed-size-button" href="logout.php">Đăng xuất</a>
+                        <a class="btn btn-secondary header-button" href="logout.php">Đăng xuất</a>
 
                         <?php else: ?>
-                        <a class="btn btn btn-success me-2" href="login.php">Đăng nhập</a>
-                        <a class="btn btn-secondary" href="register.php">Đăng ký</a>
+                        <a class="btn btn btn-success me-2 header-button" href="login.php">Đăng nhập</a>
+                        <a class="btn btn-secondary header-button" href="register.php">Đăng ký</a>
                         <?php endif; ?>
                     </div>
 

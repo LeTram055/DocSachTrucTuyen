@@ -41,9 +41,9 @@ include_once __DIR__. '/../src/partials/header.php'
         <div class="row">
             <div class="col-2">
                 <ul class="list-group list-group-flush">
-                    <li class="list-group-item p-3 <?php echo $type === 'read' ? 'selected' : ''; ?>"><a
+                    <li class="list-group-item p-2 <?php echo $type === 'read' ? 'selected' : ''; ?>"><a
                             href="?type=read" class="link"><i class="fa-solid fa-heart"></i> Sách đã đọc</a></li>
-                    <li class="list-group-item p-3 <?php echo $type === 'favourite' ? 'selected' : ''; ?>"><a
+                    <li class="list-group-item p-2 <?php echo $type === 'favourite' ? 'selected' : ''; ?>"><a
                             href="?type=favourite" class="link"><i class="fa-solid fa-book-open-reader"></i> Sách yêu
                             thích</a></li>
 
@@ -68,7 +68,8 @@ include_once __DIR__. '/../src/partials/header.php'
         </div>
 
     </div>
+</div>
 
-    <?php
+<?php
 include_once __DIR__. '/../src/partials/footer.php'
 ?>

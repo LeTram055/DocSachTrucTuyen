@@ -43,7 +43,7 @@ if (isset($_GET['id_book'])) {
 include_once __DIR__. '/../src/partials/header.php';
 ?>
 
-<div class="container">
+<div class="container flex-grow-1">
     <iframe src="<?= $pdf_path['file'] ?>" width="100%" height="650px"></iframe>
 </div>
 
