@@ -1,10 +1,9 @@
-<div>
+<div class="col-2 slidebar">
     <ul class="list-group list-group-flush">
-        <li class="list-group-item p-2 <?php echo $type === 'read' ? 'selected-ad' : ''; ?>"><a href="?type=read"><i
-                    class="fa-solid fa-heart"></i> Sách đã đọc</a></li>
-        <li class="list-group-item p-2 <?php echo $type === 'favourite' ? 'selected-ad' : ''; ?>"><a
-                href="?type=favourite"><i class="fa-solid fa-book-open-reader"></i> Sách yêu
-                thích</a></li>
-
+        <li class="list-group-item"><a href="index_ad.php"><i class="fa-solid fa-heart"></i> Trang chủ</a></li>
+        <li class="list-group-item"><a href="manage_genre.php"><i class="fa-solid fa-book-open-reader"></i> Quản lý loại
+                sách</a></li>
+        <li class="list-group-item"><a href="manage_book.php"><i class="fa-solid fa-book-open-reader"></i> Quản lý
+                sách</a></li>
     </ul>
 </div>

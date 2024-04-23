@@ -37,14 +37,23 @@ if (session_status() === PHP_SESSION_NONE) {
     <div class="container-fluid header">
         <div class="d-flex justify-content-between align-items-center">
             <div class="my-1">
-                <a href="index_ad.php"><img id="logo" src="images/logo.png" height="60px" /></a>
+                <a href="index_ad.php"><img id="logo" src="images/logo.png" height="50px" /></a>
             </div>
 
-            <div>
-                <?php if(isset($_SESSION['user']['fullname'])): ?>
-                <p>Xin chào, <?php echo $_SESSION['user']['fullname']; ?></p>
-                <?php endif; ?>
+            <div class="dropdown">
+                <a class="dropdown-toggle link text-white" href="#" role="button" data-bs-toggle="dropdown"
+                    aria-expanded="false">
+                    <?php if(isset($_SESSION['user']['fullname'])): ?>
+                    Xin chào, <?php echo $_SESSION['user']['fullname']; ?>
+                    <?php endif; ?>
+                </a>
+
+                <ul class="dropdown-menu">
+                    <li><a class="dropdown-item" href="logout.php">Đăng xuất</a></li>
+
+                </ul>
             </div>
+
         </div>
 
     </div>
