@@ -8,7 +8,10 @@ include_once __DIR__. '/../src/partials/header_ad.php'
 
 <div class="container-fluid flex-grow-1">
     <div class="row">
-        <?php include_once __DIR__. '/../src/partials/slidebar_ad.php' ?>
+        <div class="col-2">
+            <?php include_once __DIR__. '/../src/partials/slidebar_ad.php' ?>
+
+        </div>
 
         <div class="col-10 ">
 

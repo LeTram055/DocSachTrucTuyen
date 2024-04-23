@@ -18,9 +18,9 @@ $(document).ready(function() {
                     
                 } else {
                     if (response === 'added') {
-                        $("#favoriteIcon").removeClass("far").addClass("fas");
+                        $("#favoriteIcon").removeClass("fa-regular").addClass("fa-solid");
                     } else if (response === 'removed') {
-                        $("#favoriteIcon").removeClass("fas").addClass("far");
+                        $("#favoriteIcon").removeClass("fa-solid").addClass("fa-regular");
                     }
                 }
             }
