@@ -2,7 +2,6 @@
 include __DIR__ . '/../src/connect.php';
 
 $errors = [];
-$error_message = '';
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $email = $_POST['email'];
@@ -28,31 +27,35 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $stmt = $pdo->prepare("SELECT * FROM user WHERE email = ?");
     $stmt->execute([$email]);
     if ($stmt->rowCount() > 0) {
-        $error_message = "Hãy đăng ký bằng email khác.";
-    }
-
-    // Nếu không có lỗi, thêm người dùng mới vào cơ sở dữ liệu
-    if (empty($errors) && empty($error_message)) {
-        $hashed_password = password_hash($password, PASSWORD_DEFAULT);
-
-        $stmt = $pdo->prepare("INSERT INTO user (email, fullname, password) VALUES (?, ?, ?)");
-        if ($stmt->execute([$email, $fullname, $hashed_password])) {
-            
-            echo "<script>
-                    alert ('Đăng ký thành công!')
-                    window.location.href = 'login.php';
+        echo "<script>
+                    alert ('Hãy đăng ký bằng email khác.');
                 </script>";
+    } else {
+        // Nếu không có lỗi, thêm người dùng mới vào cơ sở dữ liệu
+        if (empty($errors) && empty($error_message)) {
+            $hashed_password = password_hash($password, PASSWORD_DEFAULT);
 
-            exit();
-        } else {
-            $error_message = "Đã xảy ra lỗi khi đăng ký. Vui lòng thử lại sau.";
+            $stmt = $pdo->prepare("INSERT INTO user (email, fullname, password) VALUES (?, ?, ?)");
+            if ($stmt->execute([$email, $fullname, $hashed_password])) {
+                
+                echo "<script>
+                        alert ('Đăng ký thành công!');
+                        window.location.href = 'login.php';
+                    </script>";
+
+                exit();
+            } else {
+                echo "<script>
+                        alert ('Đã xảy ra lỗi khi đăng ký. Vui lòng thử lại sau.');
+                        window.location.href = 'register.php';
+                    </script>";
+            }
         }
     }
+
+    
 }
 
-if ($error_message) {
-    include __DIR__ . '/../src/partials/show_error.php';
-}
 ?>
 
 <?php

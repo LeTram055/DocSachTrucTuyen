@@ -1,6 +1,6 @@
 <?php
 require_once __DIR__ . '/../src/connect.php';
-require_once __DIR__ . '/../vendor/autoload.php'; // Đường dẫn tới autoload.php của thư viện PhpSpreadsheet
+require_once __DIR__ . '/../vendor/autoload.php'; 
 
 // Mảng chứa các loại sản phẩm
 $sql_genre = "SELECT name_genre FROM genre";

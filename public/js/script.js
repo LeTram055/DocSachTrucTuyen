@@ -29,3 +29,26 @@ $(document).ready(function() {
     });
 });
 
+
+//Xóa thể loại
+$(document).ready(function() {
+  $('.delete-genre-btn').on('click', function(e) {
+    e.preventDefault();
+
+    const form = $(this).closest('form');
+    const genre = $(this).closest('tr').find('td').eq(1);
+
+    if (genre.length > 0) {
+      $('.modal-body').html(
+        `Bạn có muốn xóa "${genre.text()}" không? Nếu xóa thì tất cả sách thuộc thể loại này cũng sẽ bị xóa.`
+      );
+    }
+
+    $('#delete-confirm').modal('show'); // Hiển thị modal
+
+    $('#delete-confirm').on('click', '#delete', function() {
+      form.submit();
+    });
+
+  });
+});

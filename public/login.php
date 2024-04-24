@@ -2,12 +2,10 @@
 session_start();
 require_once __DIR__ . '/../src/connect.php';
 
-$error_message = '';
-
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $email = $_POST['email'];
-    $password = $_POST['password'];
+    $email = html_escape($_POST['email']);
+    $password = html_escape($_POST['password']);
     // Kiểm tra xem có tồn tại email và password không
     if (!empty($_POST['email']) && !empty($_POST['password'])) {
         
@@ -32,20 +30,20 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 }
                 
             } else {
-                $error_message = "Mật khẩu không đúng.";
+                echo '<script>alert("Mật khẩu không đúng.");</script>';
             }
         } else {
             // Đăng nhập thất bại
-            $error_message = "Email chưa đăng ký tài khoản.";
+            echo '<script>alert("Email chưa đăng ký tài khoản.");</script>';
+            
         }
     }else {
-        $error_message = "Vui lòng nhập đầy đủ thông tin.";
+        echo '<script>alert("Vui lòng nhập đầy đủ thông tin.");</script>';
+        
     }
     
 }
-if ($error_message) {
-    include __DIR__ . '/../src/partials/show_error.php';
-}
+
 ?>
 
 <?php
