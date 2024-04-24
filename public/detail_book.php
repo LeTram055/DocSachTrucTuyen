@@ -8,7 +8,7 @@ $id_book = $_GET['id_book'];
 
 if ($id_book) {
     $id_book = $_GET['id_book'];
-    $sql = "SELECT b.name_book, b.author, b.image, b.describe, g.name_genre
+    $sql = "SELECT b.name_book, b.author, b.image_book, b.describe_book, g.name_genre
             FROM book b
             JOIN genre g
             ON b.id_genre = g.id_genre
@@ -62,11 +62,20 @@ include_once __DIR__. '/../src/partials/header.php';
 ?>
 
 <div class="container flex-grow-1">
-    <div class="row justify-content-center m-5">
-        <h2 class="text-center mb-5">CHI TIẾT SÁCH</h2>
+    <div class="row justify-content-center m-4">
+        <h2 class="text-center mb-4">CHI TIẾT SÁCH</h2>
+
+        <div class="row mb-3 p-0">
+            <div class="col">
+                <button class="btn btn-light" id="goBackBtn"><i class="fa-solid fa-chevron-left"></i></button>
+            </div>
+        </div>
+
+
         <div class="col-md-4 col-sm pe-5 d-flex justify-content-center align-items-start">
             <div class="image-container">
-                <img class="detail-book-image" src="<?= $row['image'] ?>" alt="<?= html_escape($row['name_book']) ?>">
+                <img class="detail-book-image" src="<?= $row['image_book'] ?>"
+                    alt="<?= html_escape($row['name_book']) ?>">
             </div>
 
         </div>
@@ -77,7 +86,7 @@ include_once __DIR__. '/../src/partials/header.php';
                     <p style="text-align: justify;"><strong>Tác giả: </strong><?= html_escape($row['author']) ?></p>
                     <p style="text-align: justify;"><strong>Thể loại: </strong><?= html_escape($row['name_genre']) ?>
                     </p>
-                    <p style="text-align: justify;"><?= html_escape($row['describe']) ?></p>
+                    <p style="text-align: justify;"><?= html_escape($row['describe_book']) ?></p>
                 </div>
 
                 <div class="d-flex justify-content-start my-2">

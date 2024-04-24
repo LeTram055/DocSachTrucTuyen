@@ -1,3 +1,12 @@
+//Nút quay về
+$(document).ready(function() {
+            $('#goBackBtn').click(function() {
+                window.history.back();
+            });
+        });
+
+
+
 // favorite.js
 
 $(document).ready(function() {
@@ -18,9 +27,9 @@ $(document).ready(function() {
                     
                 } else {
                     if (response === 'added') {
-                        $("#favoriteIcon").removeClass("fa-regular").addClass("fa-solid");
+                        $("#favoriteIcon").removeClass("far").addClass("fas");
                     } else if (response === 'removed') {
-                        $("#favoriteIcon").removeClass("fa-solid").addClass("fa-regular");
+                        $("#favoriteIcon").removeClass("fas").addClass("far");
                     }
                 }
             }
@@ -51,4 +60,50 @@ $(document).ready(function() {
     });
 
   });
+});
+
+//Xóa sách
+$(document).ready(function() {
+  $('.delete-book-btn').on('click', function(e) {
+    e.preventDefault();
+
+    const form = $(this).closest('form');
+    const book = $(this).closest('tr').find('td').eq(1);
+
+    if (book.length > 0) {
+      $('.modal-body').html(
+        `Bạn có muốn xóa "${book.text()}" không?. Nếu xóa những thông tin liên quan đến sách cũng sẽ bị xóa.`
+      );
+    }
+
+    $('#delete-confirm').modal('show'); // Hiển thị modal
+
+    $('#delete-confirm').on('click', '#delete', function() {
+      form.submit();
+    });
+
+  });
+});
+
+//Thêm và sửa sách
+// hiện hình ảnh
+$(document).ready(function() {
+    const imgInput = $('#image');
+    const previewimg = $('#book-preview');
+
+    imgInput.change(function() {
+        const file = this.files[0];
+
+        if (file) {
+            const reader = new FileReader();
+
+            reader.readAsDataURL(file);
+            reader.onload = function() {
+
+                const imgDataURL = reader.result;
+                previewimg.attr('src', imgDataURL);
+                previewimg.show();
+            };
+        }
+    });
 });

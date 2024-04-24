@@ -7,14 +7,14 @@ $type = isset($_GET['type']) ? $_GET['type'] : 'read';
 
 if ($type === 'read') {
     // Truy vấn sách đã đọc
-    $sql = "SELECT b.id_book, b.image, b.name_book 
+    $sql = "SELECT b.id_book, b.image_book, b.name_book 
             FROM readingHistory rh
             JOIN book b 
             ON rh.id_book = b.id_book
             WHERE rh.email = ?";
 } elseif ($type === 'favourite') {
     // Truy vấn sách yêu thích
-    $sql = "SELECT b.id_book, b.image, b.name_book 
+    $sql = "SELECT b.id_book, b.image_book, b.name_book 
             FROM favourite f
             JOIN book b 
             ON f.id_book = b.id_book
@@ -32,9 +32,9 @@ include_once __DIR__. '/../src/partials/header.php'
 <div class="container flex-grow-1">
     <div class="row justify-content-center m-5">
         <?php if ($type === 'read') {
-            echo '<h2 class="text-center mb-5">SÁCH ĐÃ ĐỌC</h2>';
+            echo '<h2 class="text-center mb-4">SÁCH ĐÃ ĐỌC</h2>';
         } elseif ($type === 'favourite') {
-            echo '<h2 class="text-center mb-5">SÁCH YÊU THÍCH</h2>';
+            echo '<h2 class="text-center mb-4">SÁCH YÊU THÍCH</h2>';
         }
             ?>
 
@@ -55,7 +55,7 @@ include_once __DIR__. '/../src/partials/header.php'
                     <div class="col-md-4 col-sm-6">
                         <a href="detail_book.php?id_book=<?= $row['id_book'] ?>" class="book-link">
                             <div class="book-item">
-                                <img src="<?= $row['image'] ?>" alt="<?= html_escape($row['name_book']) ?>"
+                                <img src="<?= $row['image_book'] ?>" alt="<?= html_escape($row['name_book']) ?>"
                                     class="img-fluid book-image">
                                 <h5><?= html_escape($row['name_book']) ?></h5>
                             </div>

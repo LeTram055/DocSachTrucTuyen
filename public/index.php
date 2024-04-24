@@ -48,7 +48,7 @@ include_once __DIR__. '/../src/partials/header.php'
 
     <?php foreach ($genres as $genre) : ?>
     <?php
-    $sql = "SELECT name_book, image, id_book
+    $sql = "SELECT name_book, image_book, id_book
             FROM book
             WHERE id_genre = (SELECT id_genre FROM genre WHERE name_genre = ?)
             LIMIT 4";
@@ -63,7 +63,8 @@ include_once __DIR__. '/../src/partials/header.php'
                 <h2><?= mb_strtoupper($genre['name_genre']) ?></h2>
             </div>
             <div class="col-6 text-end pt-2">
-                <a href="book.php?name_genre=<?= urlencode($genre['name_genre']) ?>" class="link">Xem tất cả sách</a>
+                <a href="book.php?name_genre=<?= urlencode($genre['name_genre']) ?>" class="link">Xem tất cả sách
+                    &gt;</a>
             </div>
         </div>
         <hr class="line">
@@ -72,7 +73,7 @@ include_once __DIR__. '/../src/partials/header.php'
             <div class="col-md-3 col-sm-6">
                 <a href="detail_book.php?id_book=<?= $book['id_book'] ?>" class="book-link">
                     <div class="book-item">
-                        <img src="<?= $book['image'] ?>" alt="<?= html_escape($book['name_book']) ?>"
+                        <img src="<?= $book['image_book'] ?>" alt="<?= html_escape($book['name_book']) ?>"
                             class="img-fluid book-image">
                         <h5><?= html_escape($book['name_book']) ?></h5>
                     </div>

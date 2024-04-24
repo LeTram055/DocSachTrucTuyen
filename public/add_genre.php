@@ -41,16 +41,16 @@ include_once __DIR__. '/../src/partials/header_ad.php'
         </div>
 
         <div class="col-10">
-            <div class="row justify-content-center m-5">
+            <div class="row justify-content-center m-4">
                 <h2 class="text-center">THÊM THỂ LOẠI</h2>
             </div>
-            <div class="row">
-                <div class="col">
-                    <a href="javascript:history.go(-1);" class="btn btn-light"><i
-                            class="fa-solid fa-chevron-left"></i></a>
-                </div>
 
+            <div class="row mb-3 p-0">
+                <div class="col">
+                    <button class="btn btn-light" id="goBackBtn"><i class="fa-solid fa-chevron-left"></i></button>
+                </div>
             </div>
+
             <div class="row m-3">
                 <div class="col">
                     <form method="post" enctype="multipart/form-data" class="col-md-6 offset-md-3">
@@ -70,14 +70,14 @@ include_once __DIR__. '/../src/partials/header_ad.php'
                         <div class="form-group m-1">
                             <label for="name_genre">Tên thể loại</label>
                             <input type="text" name="name_genre" class="form-control" maxlen="100" id="name_genre"
-                                placeholder="Nhập tên loại"
+                                placeholder="Nhập tên thể loại"
                                 value="<?= isset($_POST['name_genre']) ? html_escape($_POST['name_genre']) : '' ?>"
                                 required />
                         </div>
 
                         <!-- Submit -->
                         <div class="text-center m-3">
-                            <!-- Đây là phần chỉnh sửa -->
+
                             <button type="submit" name="submit" class="btn btn-primary">Thêm</button>
                         </div>
                     </form>

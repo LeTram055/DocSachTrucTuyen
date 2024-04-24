@@ -7,7 +7,7 @@ include_once __DIR__. '/../src/partials/header.php'
 
 <div class="container">
     <div class="row m-5">
-        <h2 class="text-center mb-5">GIỚI THIỆU</h2>
+        <h2 class="text-center mb-4">GIỚI THIỆU</h2>
         <div class="d-flex justify-content-center mb-5 "><img src="images/ebook1.png" alt="Giới thiệu"
                 class="w-50 rounded-5">
         </div>

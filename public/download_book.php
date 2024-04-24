@@ -4,7 +4,7 @@ require_once __DIR__ . '/../src/connect.php';
 $id_book = $_GET['id_book'];
 
 // Lấy thông tin về sách cần tải
-$sql = "SELECT file FROM book WHERE id_book = ?";
+$sql = "SELECT file_book FROM book WHERE id_book = ?";
 $stmt = $pdo->prepare($sql);
 $stmt->execute([$id_book]);
 $book = $stmt->fetch(PDO::FETCH_ASSOC);

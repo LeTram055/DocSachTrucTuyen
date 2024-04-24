@@ -44,7 +44,7 @@ include_once __DIR__. '/../src/partials/header.php';
 
 <div class="container flex-grow-1">
     <div class="row my-5">
-        <h2 class="text-center mb-5"> KẾT QUẢ TÌM KIẾM SẢN PHẨM VỚI TỪ KHÓA "<?= $search_term ?>"</h2>
+        <h2 class="text-center mb-4"> KẾT QUẢ TÌM KIẾM SẢN PHẨM VỚI TỪ KHÓA "<?= $search_term ?>"</h2>
         <div class="row">
             <div class="dropdown">
                 <a class="btn btn-outline-dark dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"

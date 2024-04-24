@@ -41,16 +41,16 @@ include_once __DIR__. '/../src/partials/header_ad.php'
         </div>
 
         <div class="col-10">
-            <div class="row justify-content-center m-5">
+            <div class="row justify-content-center m-4">
                 <h2 class="text-center">THÊM THỂ LOẠI</h2>
             </div>
-            <div class="row">
-                <div class="col">
-                    <a href="javascript:history.go(-1);" class="btn btn-light"><i
-                            class="fa-solid fa-chevron-left"></i></a>
-                </div>
 
+            <div class="row mb-3 p-0">
+                <div class="col">
+                    <button class="btn btn-light" id="goBackBtn"><i class="fa-solid fa-chevron-left"></i></button>
+                </div>
             </div>
+
             <div class="row m-3">
                 <div class="col">
                     <form method="post" enctype="multipart/form-data" class="col-md-6 offset-md-3">

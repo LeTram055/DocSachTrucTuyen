@@ -31,7 +31,7 @@ if (isset($_GET['id_book'])) {
         echo '<script>alert("Vui lòng đăng nhập để lưu thông tin sách đã đọc.");</script>';
     }
 
-    $sql = "SELECT file
+    $sql = "SELECT file_book
             FROM book
             WHERE id_book = ?";
     $stmt = $pdo->prepare($sql);
@@ -44,7 +44,7 @@ include_once __DIR__. '/../src/partials/header.php';
 ?>
 
 <div class="container flex-grow-1">
-    <iframe src="<?= $pdf_path['file'] ?>" width="100%" height="650px"></iframe>
+    <iframe src="<?= $pdf_path['file_book'] ?>" width="100%" height="650px"></iframe>
 </div>
 
 <?php
