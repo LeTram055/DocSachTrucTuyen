@@ -102,7 +102,7 @@ include_once __DIR__. '/../src/partials/header_ad.php'
 
             <div class="row my-3">
                 <div class="col">
-                    <table class="table table-bordered">
+                    <table class="table table-bordered table-striped">
                         <thead>
                             <tr>
                                 <th class="align-content-start">Mã sách</th>
@@ -115,7 +115,7 @@ include_once __DIR__. '/../src/partials/header_ad.php'
                                 <th class="text-center align-content-start">Số lượt đọc</th>
                             </tr>
                         </thead>
-                        <tbody>
+                        <tbody class="table-group-divider">
                             <?php foreach ($rows as $row) : ?>
 
                             <tr>

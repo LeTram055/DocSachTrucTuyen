@@ -33,14 +33,14 @@ function exportToExcel($data) {
 
 if ($_SERVER['REQUEST_METHOD'] === 'GET' && isset($_GET['keyword'])) {
     $keyword = $_GET['keyword'];
-    $sql = "SELECT email, fullname FROM user 
+    $sql = "SELECT email, fullname, role FROM user 
             WHERE email LIKE concat('%', ? '%') 
             OR fullname LIKE concat('%', ? '%')";
     $stmt = $pdo->prepare($sql);
     $stmt->execute([$keyword, $keyword]);
 } else {
 
-    $sql = "SELECT email, fullname FROM user";
+    $sql = "SELECT email, fullname, role FROM user";
     $stmt = $pdo->prepare($sql);
     $stmt->execute();
     
@@ -93,7 +93,7 @@ include_once __DIR__. '/../src/partials/header_ad.php'
 
             <div class="row my-3">
                 <div class="col">
-                    <table class="table table-bordered">
+                    <table class="table table-bordered table-striped">
                         <thead>
                             <tr>
                                 <th class="align-content-start">Email</th>
@@ -101,9 +101,9 @@ include_once __DIR__. '/../src/partials/header_ad.php'
                                 <th class="text-center align-content-start">Hành động</th>
                             </tr>
                         </thead>
-                        <tbody>
+                        <tbody class="table-group-divider">
                             <?php foreach ($rows as $row) : ?>
-
+                            <?php if ($row['role'] == "admin") continue?>
                             <tr>
                                 <td><?= html_escape($row['email']) ?></td>
                                 <td><?= html_escape($row['fullname']) ?></td>

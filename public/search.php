@@ -9,7 +9,7 @@ if (isset($_GET['search'])) {
 
     if(isset($sort) && $sort=='asc'){
 
-    $sql = "SELECT b.id_book, b.name_book, b.image FROM book b 
+    $sql = "SELECT b.id_book, b.name_book, b.image_book FROM book b 
             JOIN genre g
             ON g.id_genre = b.id_genre
             WHERE name_book LIKE concat('%', ?, '%')
@@ -17,7 +17,7 @@ if (isset($_GET['search'])) {
             ORDER BY name_book ASC";
 
     } else if(isset($sort) && $sort== "desc"){
-    $sql = "SELECT b.id_book, b.name_book, b.image FROM book b 
+    $sql = "SELECT b.id_book, b.name_book, b.image_book FROM book b 
             JOIN genre g
             ON g.id_genre = b.id_genre
             WHERE name_book LIKE concat('%', ?, '%')
@@ -26,7 +26,7 @@ if (isset($_GET['search'])) {
 
     }else{
 
-    $sql = "SELECT b.id_book, b.name_book, b.image FROM book b 
+    $sql = "SELECT b.id_book, b.name_book, b.image_book FROM book b 
             JOIN genre g
             ON g.id_genre = b.id_genre
             WHERE name_book LIKE concat('%', ?, '%')
@@ -64,7 +64,7 @@ include_once __DIR__. '/../src/partials/header.php';
             <div class="col-md-3 col-sm-6">
                 <a href="detail_book.php?id_book=<?= $row['id_book'] ?>" class="book-link">
                     <div class="book-item">
-                        <img src="<?= $row['image'] ?>" alt="<?= html_escape($book['name_book']) ?>"
+                        <img src="<?= $row['image_book'] ?>" alt="<?= html_escape($book['name_book']) ?>"
                             class="img-fluid book-image">
                         <h5><?= html_escape($row['name_book']) ?></h5>
                     </div>

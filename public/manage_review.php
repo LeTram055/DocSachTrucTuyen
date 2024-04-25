@@ -83,7 +83,7 @@ include_once __DIR__. '/../src/partials/header_ad.php'
 
                 <div class="col d-flex justify-content-center ">
                     <form class="d-flex" role="search" method="GET">
-                        <input class="form-control me-2" type="search" placeholder="Nhập tên hoặc email người dùng"
+                        <input class="form-control me-2" type="search" placeholder="Nhập tên hoặc email hoặc tên sách"
                             aria-label="Search" name="keyword"
                             value="<?= isset($_GET['keyword']) ? html_escape($_GET['keyword']) : '' ?>">
                         <button class="btn btn-outline-dark" type="submit"><i
@@ -102,7 +102,7 @@ include_once __DIR__. '/../src/partials/header_ad.php'
 
             <div class="row my-3">
                 <div class="col">
-                    <table class="table table-bordered">
+                    <table class="table table-bordered table-striped">
                         <thead>
                             <tr>
                                 <th class="align-content-start">Mã đánh giá</th>
@@ -114,7 +114,7 @@ include_once __DIR__. '/../src/partials/header_ad.php'
                                 <th class="text-center align-content-start">Hành động</th>
                             </tr>
                         </thead>
-                        <tbody>
+                        <tbody class="table-group-divider">
                             <?php foreach ($rows as $row) : ?>
 
                             <tr>
@@ -128,7 +128,7 @@ include_once __DIR__. '/../src/partials/header_ad.php'
                                     <div class="d-flex justify-content-center">
 
                                         <form class="form-inline mx-1" action="/delete_review.php" method="POST">
-                                            <input type="hidden" name="email" value="<?= $row['email'] ?>">
+                                            <input type="hidden" name="id_review" value="<?= $row['id_review'] ?>">
                                             <button id="delete-review-btn" type="button"
                                                 class="btn btn-xs btn-danger  delete-review-btn" data-toggle="modal"
                                                 name="delete-review" data-target="#delete-confirm">

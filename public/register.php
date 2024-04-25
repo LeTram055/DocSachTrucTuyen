@@ -68,7 +68,7 @@ include_once __DIR__. '/../src/partials/header.php'
             <h2 class="text-center my-4">ĐĂNG KÝ</h2>
             <form id="registerForm" method="post" enctype="multipart/form-data">
                 <div class="mb-3">
-                    <label for="email" class="form-label">Email</label>
+                    <label for="email" class="form-label">Email:</label>
                     <input type="email" class="form-control <?= isset($errors['email']) ? 'is-invalid' : '' ?>"
                         id="email" name="email"
                         value="<?= isset($_POST['email']) ? htmlspecialchars($_POST['email']) : '' ?>"
@@ -79,7 +79,7 @@ include_once __DIR__. '/../src/partials/header.php'
                 </div>
 
                 <div class="mb-3">
-                    <label for="fullname" class="form-label">Họ và tên</label>
+                    <label for="fullname" class="form-label">Họ và tên:</label>
                     <input type="text" class="form-control <?= isset($errors['fullname']) ? 'is-invalid' : '' ?>"
                         id="fullname" name="fullname"
                         value="<?= isset($_POST['fullname']) ? htmlspecialchars($_POST['fullname']) : '' ?>"
@@ -93,7 +93,7 @@ include_once __DIR__. '/../src/partials/header.php'
 
 
                 <div class="mb-3">
-                    <label for="password" class="form-label">Mật khẩu</label>
+                    <label for="password" class="form-label">Mật khẩu:</label>
                     <input type="password" class="form-control <?= isset($errors['password']) ? ' is-invalid' : '' ?>"
                         id="password" name="password" placeholder="Nhập mật khẩu" required>
                     <?php if (isset($errors['password'])) : ?>
@@ -101,7 +101,7 @@ include_once __DIR__. '/../src/partials/header.php'
                     <?php endif ?>
                 </div>
                 <div class="mb-3">
-                    <label for="password_confirm" class="form-label">Nhập lại mật khẩu</label>
+                    <label for="password_confirm" class="form-label">Nhập lại mật khẩu:</label>
                     <input type="password"
                         class="form-control <?= isset($errors['password_confirm']) ? ' is-invalid' : '' ?>"
                         id="password_confirm" name="password_confirm" placeholder="Nhập lại mật khẩu" required>

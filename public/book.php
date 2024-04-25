@@ -54,7 +54,7 @@ include_once __DIR__. '/../src/partials/header.php';
                 <a href="detail_book.php?id_book=<?= $row['id_book'] ?>" class="book-link">
                     <div class="book-item">
                         <img src="<?= $row['image_book'] ?>" alt="<?= html_escape($row['name_book']) ?>"
-                            class="img-fluid book-image_book">
+                            class="img-fluid book-image">
                         <h5><?= html_escape($row['name_book']) ?></h5>
                     </div>
                 </a>

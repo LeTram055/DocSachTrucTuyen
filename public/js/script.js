@@ -38,6 +38,24 @@ $(document).ready(function() {
     });
 });
 
+//slidebar
+$(document).ready(function() {
+    var currentPageUrl = window.location.href;
+    var urlParts = currentPageUrl.split('/');
+    var lastUrlPart = urlParts.pop();
+
+    $('.slidebar-item a').each(function() {
+        var itemUrl = $(this).attr('href');
+        
+        // So sánh đường dẫn của mục với đường dẫn của trang hiện tại
+        if (lastUrlPart === itemUrl) {
+            $(this).parent().addClass('selected-ad');
+        }
+    });
+});
+
+
+
 
 //Xóa thể loại
 $(document).ready(function() {
@@ -95,7 +113,7 @@ $(document).ready(function() {
 
     if (user.length > 0) {
       $('.modal-body').html(
-        `Bạn có muốn xóa người dùng"${user.text()}" không?.`
+        `Bạn có muốn xóa người dùng "${user.text()}" không?.`
       );
     }
 

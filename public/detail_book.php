@@ -34,21 +34,21 @@ if (isset($_SESSION['user']['email'])) {
 $sort = $_GET['sort'] ??'';
 if(isset($sort) && $sort=='asc'){
 
-    $sql_reviews = "SELECT r.content, r.date_review, u.fullname 
+    $sql_reviews = "SELECT r.content, r.date_review, u.fullname, r.email, r.id_review
                 FROM review r
                 JOIN user u ON r.email = u.email
                 WHERE r.id_book = ?
                 ORDER BY r.date_review ASC";
 
 } else if(isset($sort) && $sort== "desc"){
-    $sql_reviews = "SELECT r.content, r.date_review, u.fullname 
+    $sql_reviews = "SELECT r.content, r.date_review, u.fullname, r.email, r.id_review
                 FROM review r
                 JOIN user u ON r.email = u.email
                 WHERE r.id_book = ?
                 ORDER BY r.date_review DESC";
 
 }else{
-    $sql_reviews = "SELECT r.content, r.date_review, u.fullname 
+    $sql_reviews = "SELECT r.content, r.date_review, u.fullname, r.email, r.id_review
                 FROM review r
                 JOIN user u ON r.email = u.email
                 WHERE r.id_book = ?";
@@ -139,10 +139,22 @@ include_once __DIR__. '/../src/partials/header.php';
                     <div class="m-2">
                         <?php foreach ($reviews as $review): ?>
                         <div class="m-2">
-                            <p><strong style="color: #2c00bf"><?= html_escape($review['fullname']) ?></strong>
-                                <span class="date-review"><i class="fa-regular fa-clock"></i>
-                                    <?= html_escape($review['date_review']) ?></span>
-                            </p>
+                            <div class="d-flex justify-content-start">
+                                <p><strong style="color: #2c00bf"><?= html_escape($review['fullname']) ?></strong>
+                                    <span class="date-review"><i class="fa-regular fa-clock"></i>
+                                        <?= html_escape($review['date_review']) ?></span>
+                                </p>
+
+                                <?php if(isset($_SESSION['user']['email']) && $_SESSION['user']['email'] == $review['email']): ?>
+                                <!-- Hiển thị nút Xóa chỉ khi đánh giá thuộc về người dùng hiện tại -->
+                                <form action="delete_review.php" method="POST" class="mx-3">
+                                    <input type="hidden" name="id_review" value="<?= $review['id_review'] ?>">
+                                    <button type="submit" class="btn btn-link p-0"><i
+                                            class="fa-solid fa-trash-can"></i></button>
+                                </form>
+                                <?php endif; ?>
+                            </div>
+
 
                             <p class="ps-3">
                                 <?= html_escape($review['content']) ?>

@@ -56,11 +56,11 @@ include_once __DIR__. '/../src/partials/header.php'
             <form method="post" enctype="multipart/form-data">
 
                 <div class="mb-3">
-                    <label for="email" class="form-label">Email</label>
+                    <label for="email" class="form-label">Email:</label>
                     <input type="email" class="form-control" id="email" name="email" placeholder="Nhập email" required>
                 </div>
                 <div class="mb-3">
-                    <label for="password" class="form-label">Mật khẩu</label>
+                    <label for="password" class="form-label">Mật khẩu:</label>
                     <input type="password" class="form-control" id="password" name="password"
                         placeholder="Nhập mật khẩu" required>
 

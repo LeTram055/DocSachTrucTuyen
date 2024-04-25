@@ -24,14 +24,14 @@ $result = $stmt_users_count->fetch(PDO::FETCH_ASSOC);
 $total_users = $result['total_users'];
 
 // Số lượng sách được yêu thích
-$sql_favourites_count = "SELECT COUNT(*) AS total_favourites FROM favourite";
+$sql_favourites_count = "SELECT COUNT(DISTINCT id_book) AS total_favourites FROM favourite";
 $stmt_favourites_count = $pdo->prepare($sql_favourites_count);
 $stmt_favourites_count->execute(); 
 $result = $stmt_favourites_count->fetch(PDO::FETCH_ASSOC);
 $total_favourites = $result['total_favourites'];
 
 // Số lượng sách đã đọc
-$sql_books_read_count = "SELECT COUNT(*) AS total_books_read FROM readingHistory";
+$sql_books_read_count = "SELECT COUNT(DISTINCT id_book) AS total_books_read FROM readingHistory";
 $stmt_books_read_count = $pdo->prepare($sql_books_read_count);
 $stmt_books_read_count->execute(); 
 $result = $stmt_books_read_count->fetch(PDO::FETCH_ASSOC);
@@ -96,7 +96,7 @@ include_once __DIR__. '/../src/partials/header_ad.php'
                     <div class="text-center bg-primary-subtle m-2 p-3 rounded-4">
 
                         <p class="fs-2"><i class="fa-solid fa-heart"></i></p>
-                        <p class="fs-4">Sách được yêu thích</p>
+                        <p class="fs-4">Sách yêu thích</p>
                         <p class="fs-1"><?= $total_favourites ?></p>
                     </div>
 

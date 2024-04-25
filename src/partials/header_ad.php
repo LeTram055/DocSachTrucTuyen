@@ -41,7 +41,7 @@ if (session_status() === PHP_SESSION_NONE) {
             </div>
 
             <div class="dropdown">
-                <a class="dropdown-toggle link text-white" href="#" role="button" data-bs-toggle="dropdown"
+                <a class="dropdown-toggle link text-white px-3" href="#" role="button" data-bs-toggle="dropdown"
                     aria-expanded="false">
                     <?php if(isset($_SESSION['user']['fullname'])): ?>
                     Xin chào, <?php echo $_SESSION['user']['fullname']; ?>
