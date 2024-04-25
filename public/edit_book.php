@@ -30,12 +30,17 @@ if (isset($_GET['id_book'])) {
         if (isset($_FILES['image']) && $_FILES['image']['error'] === UPLOAD_ERR_OK) {
             $image_name = $_FILES['image']['name'];
             $image_tmp = $_FILES['image']['tmp_name'];
-            $image_folder = 'images/' . $name_genre;
+            $image_folder = 'images/' . $name_genre . '/';
             $image_path = $image_folder . $image_name;
 
             // Di chuyển hình ảnh vào thư mục lưu trữ
             if (move_uploaded_file($image_tmp, $image_path)) {
-                $image = $image_path; // Gắn đường dẫn hình ảnh vào biến
+                $image = $image_path; 
+                // Xóa file cũ
+                if ($book['image_book'] && file_exists($book['image_book'])) {
+                    unlink($book['image_book']);
+                }
+                
             } else {
                 $error_message = "Không thể tải lên hình sản phẩm.";
             }
@@ -46,12 +51,16 @@ if (isset($_GET['id_book'])) {
         if (isset($_FILES['file']) && $_FILES['file']['error'] === UPLOAD_ERR_OK) {
             $file_name = $_FILES['file']['name'];
             $file_tmp = $_FILES['file']['tmp_name'];
-            $file_folder = 'files/' . $name_genre;
+            $file_folder = 'files/' . $name_genre . '/';
             $file_path = $file_folder . $file_name;
 
             // Di chuyển hình ảnh vào thư mục lưu trữ
             if (move_uploaded_file($file_tmp, $file_path)) {
-                $file = $file_path; // Gắn đường dẫn hình ảnh vào biến
+                $file = $file_path; 
+                // Xóa file cũ
+                if ($book['file_book'] && file_exists($book['file_book'])) {
+                    unlink($book['file_book']);
+                }
             } else {
                 $error_message = "Không thể tải lên hình sản phẩm.";
             }
@@ -91,7 +100,7 @@ include_once __DIR__. '/../src/partials/header_ad.php'
 
         <div class="col-10">
             <div class="row justify-content-center m-4">
-                <h2 class="text-center">THÊM SÁCH</h2>
+                <h2 class="text-center">CẬP NHẬT SÁCH</h2>
             </div>
 
             <div class="row mb-3">
@@ -108,47 +117,48 @@ include_once __DIR__. '/../src/partials/header_ad.php'
 
                         <!-- Mã loại -->
                         <div class="form-group m-1">
-                            <label for="id_book">Mã sách</label>
+                            <label for="id_book">Mã sách:</label>
                             <input type="text" name="id_book" class="form-control" maxlen="10" id="id_book"
                                 placeholder="Nhập mã sách" value="<?= html_escape($id_book) ?>" readonly />
                         </div>
 
                         <!-- Tên loại -->
                         <div class="form-group m-1">
-                            <label for="name_book">Tên sách</label>
+                            <label for="name_book">Tên sách:</label>
                             <input type="text" name="name_book" class="form-control" maxlen="100" id="name_book"
                                 placeholder="Nhập tên sách" value="<?= html_escape($book['name_book']) ?>" required />
                         </div>
 
                         <!-- Tác giả -->
                         <div class="form-group m-1">
-                            <label for="author">Tác giả</label>
+                            <label for="author">Tác giả:</label>
                             <input type="text" name="author" class="form-control" maxlen="50" id="author"
                                 placeholder="Nhập tên tác giả" value="<?= html_escape($book['author']) ?>" />
                         </div>
 
                         <!-- Mô tả -->
                         <div class="form-group m-1">
-                            <label for="describe">Mô tả</label>
+                            <label for="describe">Mô tả:</label>
                             <input type="text" name="describe" class="form-control" maxlen="50" id="describe"
                                 placeholder="Nhập tên mô tả" value="<?= html_escape($book['describe_book']) ?>" />
                         </div>
 
                         <!-- Ảnh bìa sách -->
-                        <div class="form-group m-1">
-                            <label for="image">Ảnh bìa sách </label>
+                        <div class="form-group m-1 my-3">
+                            <label for="image">Ảnh bìa sách: </label>
                             <?php if (!empty($book['image_book']) && file_exists($book['image_book'])) : ?>
                             <image src="<?= $book['image_book'] ?>" id="book-preview" alt="book" width="40px"
                                 height="60px">
                                 <?php endif; ?>
 
-                                <input type="file" name="image" id="image" class="form-control-file" id="image" />
+                                <input value="<?= basename(html_escape($book['image_book'])) ?>" type="file"
+                                    name="image" id="image" class="form-control-file" id="image" />
                         </div>
 
                         <!-- File -->
-                        <div class="form-group m-1">
-                            <label for="file">File pdf</label>
-                            <input value="<?= html_escape($book['file_book']) ?>" type="file" name="file"
+                        <div class="form-group m-1 my-3">
+                            <label for="file">File pdf: </label>
+                            <input value="<?= basename(html_escape($book['file_book'])) ?>" type="file" name="file"
                                 class="form-control-file" id="file" accept=".pdf" required>
                         </div>
 
@@ -162,7 +172,11 @@ include_once __DIR__. '/../src/partials/header_ad.php'
                                 $stmt_genres = $pdo->prepare($sql_genres);
                                 $stmt_genres->execute();
                                 while ($row_genre = $stmt_genres->fetch(PDO::FETCH_ASSOC)) {
-                                    echo "<option value='" . $row_genre['id_genre'] . "'>" . $row_genre['name_genre'] . "</option>";
+                                    echo "<option value='" . $row_genre['id_genre'] . "'";
+                                    if ($row_genre['id_genre'] == $book['id_genre']) {
+                                        echo " selected";
+                                    }
+                                    echo ">" . $row_genre['name_genre'] . "</option>";
                                 }
                                 ?>
                             </select>
@@ -171,7 +185,7 @@ include_once __DIR__. '/../src/partials/header_ad.php'
                         <!-- Submit -->
                         <div class="text-center m-3">
 
-                            <button type="submit" name="submit" class="btn btn-primary">Thêm</button>
+                            <button type="submit" name="submit" class="btn btn-primary">Cập nhật sách</button>
                         </div>
                     </form>
 

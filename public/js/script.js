@@ -85,6 +85,29 @@ $(document).ready(function() {
   });
 });
 
+//Xóa user
+$(document).ready(function() {
+  $('.delete-user-btn').on('click', function(e) {
+    e.preventDefault();
+
+    const form = $(this).closest('form');
+    const user = $(this).closest('tr').find('td').eq(1);
+
+    if (user.length > 0) {
+      $('.modal-body').html(
+        `Bạn có muốn xóa "${user.text()}" không?.`
+      );
+    }
+
+    $('#delete-confirm').modal('show'); // Hiển thị modal
+
+    $('#delete-confirm').on('click', '#delete', function() {
+      form.submit();
+    });
+
+  });
+});
+
 //Thêm và sửa sách
 // hiện hình ảnh
 $(document).ready(function() {

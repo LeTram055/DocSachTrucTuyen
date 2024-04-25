@@ -21,7 +21,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if (isset($_FILES['image']) && $_FILES['image']['error'] === UPLOAD_ERR_OK) {
         $image_name = $_FILES['image']['name'];
         $image_tmp = $_FILES['image']['tmp_name'];
-        $image_folder = 'images/' . $name_genre;
+        $image_folder = 'images/' . $name_genre . '/';
         $image_path = $image_folder . $image_name;
 
         // Di chuyển hình ảnh vào thư mục lưu trữ
@@ -37,7 +37,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if (isset($_FILES['file']) && $_FILES['file']['error'] === UPLOAD_ERR_OK) {
         $file_name = $_FILES['file']['name'];
         $file_tmp = $_FILES['file']['tmp_name'];
-        $file_folder = 'files/' . $name_genre;
+        $file_folder = 'files/' . $name_genre . '/';
         $file_path = $file_folder . $file_name;
 
         // Di chuyển hình ảnh vào thư mục lưu trữ
@@ -106,7 +106,7 @@ include_once __DIR__. '/../src/partials/header_ad.php'
 
                         <!-- Mã loại -->
                         <div class="form-group m-1">
-                            <label for="id_book">Mã sách</label>
+                            <label for="id_book">Mã sách:</label>
                             <input type="text" name="id_book" class="form-control" maxlen="10" id="id_book"
                                 placeholder="Nhập mã sách"
                                 value="<?= isset($_POST['id_book']) ? html_escape($_POST['id_book']) : '' ?>"
@@ -115,7 +115,7 @@ include_once __DIR__. '/../src/partials/header_ad.php'
 
                         <!-- Tên loại -->
                         <div class="form-group m-1">
-                            <label for="name_book">Tên sách</label>
+                            <label for="name_book">Tên sách:</label>
                             <input type="text" name="name_book" class="form-control" maxlen="100" id="name_book"
                                 placeholder="Nhập tên sách"
                                 value="<?= isset($_POST['name_book']) ? html_escape($_POST['name_book']) : '' ?>"
@@ -124,7 +124,7 @@ include_once __DIR__. '/../src/partials/header_ad.php'
 
                         <!-- Tác giả -->
                         <div class="form-group m-1">
-                            <label for="author">Tác giả</label>
+                            <label for="author">Tác giả:</label>
                             <input type="text" name="author" class="form-control" maxlen="50" id="author"
                                 placeholder="Nhập tên tác giả"
                                 value="<?= isset($_POST['author']) ? html_escape($_POST['author']) : '' ?>" />
@@ -132,28 +132,28 @@ include_once __DIR__. '/../src/partials/header_ad.php'
 
                         <!-- Mô tả -->
                         <div class="form-group m-1">
-                            <label for="describe">Mô tả</label>
+                            <label for="describe">Mô tả:</label>
                             <input type="text" name="describe" class="form-control" maxlen="50" id="describe"
                                 placeholder="Nhập tên mô tả"
                                 value="<?= isset($_POST['describe']) ? html_escape($_POST['describe']) : '' ?>" />
                         </div>
 
                         <!-- Ảnh bìa sách -->
-                        <div class="form-group m-1">
-                            <label for="image">Ảnh bìa sách </label>
+                        <div class="form-group m-1 my-3">
+                            <label for="image">Ảnh bìa sách: </label>
                             <image id="book-preview" style="display: none;" alt="book" width="40px" height="60px">
                                 <input type="file" name="image" id="image" class="form-control-file" id="image" />
                         </div>
 
                         <!-- File -->
-                        <div class="form-group m-1">
-                            <label for="file">File pdf</label>
+                        <div class="form-group m-1 my-3">
+                            <label for="file">File pdf: </label>
                             <input type="file" name="file" class="form-control-file" id="file" accept=".pdf" required>
                         </div>
 
                         <!-- Tên thể loại -->
                         <div class="form-group m-1">
-                            <label for="genre">Tên thể loại</label>
+                            <label for="genre">Tên thể loại: </label>
                             <select name="genre" id="genre" class="form-control" required>
                                 <option value="">Chọn thể loại</option>
                                 <?php
