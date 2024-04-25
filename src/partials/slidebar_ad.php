@@ -10,14 +10,17 @@
             <ul class="collapse list-group list-group-flush" id="manageBook">
                 <li class="list-group-item"><a href="manage_book.php"><i class="fa-solid fa-book"></i>&nbsp; Tất cả
                         sách</a></li>
-                <li class="list-group-item"><a href="favourite_books.php"><i class="fa-solid fa-heart"></i>&nbsp; Sách
+                <li class="list-group-item"><a href="favourite_book.php"><i class="fa-solid fa-heart"></i>&nbsp; Sách
                         được yêu thích</a></li>
-                <li class="list-group-item"><a href="most_read_books.php"><i
-                            class="fa-solid fa-book-open-reader"></i>&nbsp; Sách
+                <li class="list-group-item"><a href="read_book.php"><i class="fa-solid fa-book-open-reader"></i>&nbsp;
+                        Sách
                         được đọc nhiều</a></li>
             </ul>
         </li>
-        <li class="list-group-item"><a href="manage_user.php"><i class="fa-solid fa-user"></i></i>&nbsp; Quản lý người
+        <li class="list-group-item"><a href="manage_user.php"><i class="fa-solid fa-user"></i>&nbsp; Quản lý người
                 dùng</a></li>
+        <li class="list-group-item"><a href="manage_review.php"><i class="fa-solid fa-pen-to-square"></i>&nbsp; Quản lý
+                đánh
+                giá</a></li>
     </ul>
 </div>

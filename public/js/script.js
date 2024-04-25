@@ -49,7 +49,7 @@ $(document).ready(function() {
 
     if (genre.length > 0) {
       $('.modal-body').html(
-        `Bạn có muốn xóa "${genre.text()}" không? Nếu xóa thì tất cả sách thuộc thể loại này cũng sẽ bị xóa.`
+        `Bạn có muốn xóa thể loại "${genre.text()}" không? Nếu xóa thì tất cả sách thuộc thể loại này cũng sẽ bị xóa.`
       );
     }
 
@@ -72,7 +72,7 @@ $(document).ready(function() {
 
     if (book.length > 0) {
       $('.modal-body').html(
-        `Bạn có muốn xóa "${book.text()}" không?. Nếu xóa những thông tin liên quan đến sách cũng sẽ bị xóa.`
+        `Bạn có muốn xóa sách "${book.text()}" không?. Nếu xóa những thông tin liên quan đến sách cũng sẽ bị xóa.`
       );
     }
 
@@ -95,7 +95,30 @@ $(document).ready(function() {
 
     if (user.length > 0) {
       $('.modal-body').html(
-        `Bạn có muốn xóa "${user.text()}" không?.`
+        `Bạn có muốn xóa người dùng"${user.text()}" không?.`
+      );
+    }
+
+    $('#delete-confirm').modal('show'); // Hiển thị modal
+
+    $('#delete-confirm').on('click', '#delete', function() {
+      form.submit();
+    });
+
+  });
+});
+
+//Xóa đánh giá
+$(document).ready(function() {
+  $('.delete-review-btn').on('click', function(e) {
+    e.preventDefault();
+
+    const form = $(this).closest('form');
+    const review = $(this).closest('tr').find('td').eq(4);
+
+    if (review.length > 0) {
+      $('.modal-body').html(
+        `Bạn có muốn xóa đánh giá "${review.text()}" không?.`
       );
     }
 

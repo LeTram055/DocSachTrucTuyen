@@ -10,7 +10,7 @@ function exportToExcel($data) {
     $sheet = $spreadsheet->getActiveSheet();
 
     // Thiết lập header
-    $header = ['Mã sách','Tên sách', 'Nơi chứa ảnh', 'Tác giả', 'Mô tả', 'Nơi chứa file', 'Tên thể loại', 'Số lượt yêu thích'];
+    $header = ['Mã sách','Tên sách', 'Nơi chứa ảnh', 'Tác giả', 'Mô tả', 'Nơi chứa file', 'Tên thể loại', 'Số lượt đọc'];
     $sheet->fromArray($header, NULL, 'A1');
 
     // Ghi dữ liệu
@@ -22,7 +22,7 @@ function exportToExcel($data) {
 
     // Thiết lập response header để tải file về
     header('Content-Type: application/vnd.ms-excel');
-    header('Content-Disposition: attachment;filename="sachyeuthich.xls"');
+    header('Content-Disposition: attachment;filename="sachdocnhieu.xls"');
     header('Cache-Control: max-age=0');
 
     // Tạo một file Excel tạm thời và ghi dữ liệu vào nó
@@ -34,23 +34,23 @@ function exportToExcel($data) {
 if ($_SERVER['REQUEST_METHOD'] === 'GET' && isset($_GET['keyword'])) {
     $keyword = $_GET['keyword'];
     $sql = "SELECT b.id_book, b.name_book, b.image_book, b.author, b.describe_book, b.file_book, g.name_genre, 
-            (SELECT COUNT(*) FROM favourite WHERE id_book = b.id_book) AS favourite_count
+            (SELECT COUNT(*) FROM read WHERE id_book = b.id_book) AS read_count
             FROM book b
             JOIN genre g
             ON b.id_genre = g.id_genre
             WHERE name_book LIKE concat('%', ? '%') 
             OR id_book LIKE ?
-            HAVING favourite_count > 0";
+            HAVING read_count > 0";
     $stmt = $pdo->prepare($sql);
     $stmt->execute([$keyword, $keyword]);
 } else {
     $sql = "SELECT b.id_book, b.name_book, b.image_book, b.author, b.describe_book, b.file_book, g.name_genre, 
-            (SELECT COUNT(*) FROM favourite WHERE id_book = b.id_book) AS favourite_count
+            (SELECT COUNT(*) FROM readingHistory WHERE id_book = b.id_book) AS read_count
             FROM book b
             JOIN genre g
             ON b.id_genre = g.id_genre
-            HAVING favourite_count > 0
-            ORDER BY favourite_count  DESC";
+            HAVING read_count > 0
+            ORDER BY read_count DESC";
     $stmt = $pdo->prepare($sql);
     $stmt->execute();
 }
@@ -112,7 +112,7 @@ include_once __DIR__. '/../src/partials/header_ad.php'
                                 <th class="align-content-start">Mô tả</th>
                                 <th class="align-content-start">Tên file</th>
                                 <th class="align-content-start">Tên thể loại</th>
-                                <th class="text-center align-content-start">Số lượt yêu thích</th>
+                                <th class="text-center align-content-start">Số lượt đọc</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -127,7 +127,7 @@ include_once __DIR__. '/../src/partials/header_ad.php'
                                 <td><?= html_escape($row['describe_book']) ?></td>
                                 <td><?= basename(html_escape($row['file_book'])) ?></td>
                                 <td><?= html_escape($row['name_genre']) ?></td>
-                                <td class="text-center"><?= $row['favourite_count'] ?></td>
+                                <td class="text-center"><?= $row['read_count'] ?></td>
                             </tr>
                             <?php endforeach ?>
                         </tbody>
