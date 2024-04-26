@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Máy chủ: 127.0.0.1
--- Thời gian đã tạo: Th4 24, 2024 lúc 06:37 PM
+-- Thời gian đã tạo: Th4 26, 2024 lúc 07:56 AM
 -- Phiên bản máy phục vụ: 10.4.32-MariaDB
 -- Phiên bản PHP: 8.2.12
 
@@ -104,6 +104,8 @@ CREATE TABLE `favourite` (
 
 INSERT INTO `favourite` (`email`, `id_book`) VALUES
 ('lenam789@gmail.com', 's022'),
+('ngoc4567@gmail.com', 's002'),
+('ngoc4567@gmail.com', 's015'),
 ('tramle055@gmail.com', 's001'),
 ('tramle055@gmail.com', 's002'),
 ('tramle055@gmail.com', 's011'),
@@ -141,15 +143,25 @@ INSERT INTO `genre` (`id_genre`, `name_genre`) VALUES
 CREATE TABLE `readinghistory` (
   `date_reading` date NOT NULL,
   `email` varchar(100) NOT NULL,
-  `id_book` varchar(10) NOT NULL
+  `id_book` varchar(10) NOT NULL,
+  `position_reading` int(11) NOT NULL DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
 -- Đang đổ dữ liệu cho bảng `readinghistory`
 --
 
-INSERT INTO `readinghistory` (`date_reading`, `email`, `id_book`) VALUES
-('2024-04-24', 'tramle055@gmail.com', 's001');
+INSERT INTO `readinghistory` (`date_reading`, `email`, `id_book`, `position_reading`) VALUES
+('2024-04-24', 'tramle055@gmail.com', 's001', 5),
+('2024-04-25', 'ngoc4567@gmail.com', 's015', 8),
+('2024-04-25', 'ngoc4567@gmail.com', 's022', 9),
+('2024-04-25', 'ngoc4567@gmail.com', 's007', 20),
+('2024-04-25', 'tramle055@gmail.com', 's017', 7),
+('2024-04-25', 'tramle055@gmail.com', 's015', 12),
+('2024-04-25', 'lenam789@gmail.com', 's012', 55),
+('2024-04-26', 'ngoc4567@gmail.com', 's021', 4),
+('2024-04-26', 'ngoc4567@gmail.com', 's002', 1),
+('2024-04-26', 'ngoc4567@gmail.com', 's010', 35);
 
 -- --------------------------------------------------------
 
@@ -178,7 +190,11 @@ INSERT INTO `review` (`id_review`, `content`, `date_review`, `email`, `id_book`)
 (7, 'truyện rất hài hước', '2024-04-24', 'lenam789@gmail.com', 's017'),
 (8, 'nội dung bổ ích', '2024-04-24', 'lenam789@gmail.com', 's030'),
 (9, 'Hãy thử sống một ngày bạn trân trọng mọi cung bậc cảm xúc bên trong con người bạn.', '2024-04-24', 'lenam789@gmail.com', 's036'),
-(10, 'Truyện sâu sắc.', '2024-04-24', 'lenam789@gmail.com', 's022');
+(10, 'Truyện sâu sắc.', '2024-04-24', 'lenam789@gmail.com', 's022'),
+(12, 'truyện rất hài hước', '2024-04-25', 'ngoc4567@gmail.com', 's015'),
+(13, 'truyện rất cảm động', '2024-04-25', 'ngoc4567@gmail.com', 's022'),
+(15, 'truyện thú vị lắm.', '2024-04-25', 'lenam789@gmail.com', 's015'),
+(16, 'sách rất hay và hữu ích.', '2024-04-25', 'lenam789@gmail.com', 's012');
 
 -- --------------------------------------------------------
 
@@ -219,6 +235,7 @@ ALTER TABLE `book`
 --
 ALTER TABLE `favourite`
   ADD PRIMARY KEY (`email`,`id_book`),
+  ADD KEY `email` (`email`),
   ADD KEY `id_book` (`id_book`);
 
 --
@@ -231,6 +248,7 @@ ALTER TABLE `genre`
 -- Chỉ mục cho bảng `readinghistory`
 --
 ALTER TABLE `readinghistory`
+  ADD PRIMARY KEY (`email`,`id_book`),
   ADD KEY `email` (`email`),
   ADD KEY `id_book` (`id_book`);
 
@@ -256,7 +274,7 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT cho bảng `review`
 --
 ALTER TABLE `review`
-  MODIFY `id_review` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id_review` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
 
 --
 -- Các ràng buộc cho các bảng đã đổ
