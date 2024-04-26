@@ -63,7 +63,8 @@ include_once __DIR__. '/../src/partials/header.php'
                 <h2><?= mb_strtoupper($genre['name_genre']) ?></h2>
             </div>
             <div class="col-6 text-end pt-2">
-                <a href="book.php?name_genre=<?= urlencode($genre['name_genre']) ?>" class="link">Xem tất cả sách
+                <a href="book.php?name_genre=<?= urlencode($genre['name_genre']) ?>" class="link view-all">Xem tất cả
+                    sách
                     &gt;</a>
             </div>
         </div>

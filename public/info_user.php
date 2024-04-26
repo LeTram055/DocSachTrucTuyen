@@ -3,6 +3,7 @@ session_start();
 require_once __DIR__ . '/../src/connect.php';
 
 $email = $_SESSION['user']['email'];
+$fullname = $_SESSION['user']['fullname'];
 $type = isset($_GET['type']) ? $_GET['type'] : 'read';
 
 if ($type === 'read') {
@@ -25,11 +26,42 @@ $stmt = $pdo->prepare($sql);
 $stmt->execute([$email]);
 $rows = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
+// Truy vấn để lấy số sách đã đọc của người dùng
+$sqlTotalBooks = "SELECT COUNT(*) AS total_books FROM readingHistory WHERE email = ?";
+$stmtTotalBooks = $pdo->prepare($sqlTotalBooks);
+$stmtTotalBooks->execute([$email]);
+$totalBooks = $stmtTotalBooks->fetch(PDO::FETCH_ASSOC)['total_books'];
+
+
 
 include_once __DIR__. '/../src/partials/header.php'
 ?>
 
 <div class="container flex-grow-1">
+
+    <div class="row justify-content-center m-5">
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-header">
+                    <h2 class="text-center">THÔNG TIN NGƯỜI DÙNG</h2>
+                </div>
+                <div class="card-body">
+
+                    <p><strong>Email:</strong> <?php echo $email; ?></p>
+                    <p><strong>Tên:</strong> <?php echo $fullname ?></p>
+                    <p><strong>Số sách đã đọc:</strong> <?php echo $totalBooks; ?></p>
+
+                    <div class="form-check form-switch form-check-reverse d-flex justify-content-start">
+                        <label class="form-check-label" for="nightModeToggle">Chế độ nền tối: &nbsp;</label>
+                        <input style="height: 20px; width: 40px" class="form-check-input" type="checkbox" role="switch"
+                            id="nightModeToggle">
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
     <div class="row justify-content-center m-5">
         <?php if ($type === 'read') {
             echo '<h2 class="text-center mb-4">SÁCH ĐÃ ĐỌC</h2>';

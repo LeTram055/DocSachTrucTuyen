@@ -101,6 +101,11 @@
     color: #2c00bf;
     font-weight: 500;
     font-size: 30px;
+    text-shadow:
+        -1px -1px 0 white,  
+         1px -1px 0 white,
+        -1px  1px 0 white,
+         1px  1px 0 white;
 }
 
 .favorite-btn {
@@ -155,6 +160,37 @@
     font-style: italic;
     font-size: 14px;
 }
+
+/*night mode*/
+.night-mode {
+    background-color: #333; 
+    color: white; 
+}
+
+.night-mode .view-all{
+    
+    color: white; 
+}
+
+.night-mode .book-item h5 {
+  color: white;
+}
+
+.night-mode .book-item:hover {
+    box-shadow: 0 4px 8px rgb(248, 243, 243); 
+    transition: box-shadow 0.3s ease;
+}
+
+.night-mode .sort-btn {
+    border-color: white;
+    color: #fff;
+}
+
+.night-mode .sort-btn:hover {
+    background-color: white;
+    color: black;
+}
+
 
 /*Info-user*/
 .selected {

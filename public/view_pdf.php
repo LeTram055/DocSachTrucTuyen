@@ -44,8 +44,10 @@ include_once __DIR__. '/../src/partials/header.php';
 ?>
 
 <div class="container flex-grow-1">
-    <iframe src="<?= $pdf_path['file_book'] ?>" width="100%" height="650px"></iframe>
+
+    <iframe id="view-pdf" src="<?= $pdf_path['file_book'] ?>" width="100%" height="650px"></iframe>
 </div>
+
 
 <?php
 include_once __DIR__. '/../src/partials/footer.php'

@@ -119,7 +119,7 @@ include_once __DIR__. '/../src/partials/header.php';
                     <div class="d-flex justify-content-between">
                         <h5 class="align-content-center">ĐÁNH GIÁ SÁCH (<?= count($reviews) ?>)</h5>
                         <div class="dropdown">
-                            <a class="btn btn-outline-dark dropdown-toggle" href="#" role="button"
+                            <a class="btn btn-outline-dark dropdown-toggle sort-btn" href="#" role="button"
                                 data-bs-toggle="dropdown" aria-expanded="false">
                                 Sắp xếp
                             </a>
@@ -140,7 +140,7 @@ include_once __DIR__. '/../src/partials/header.php';
                         <?php foreach ($reviews as $review): ?>
                         <div class="m-2">
                             <div class="d-flex justify-content-start">
-                                <p><strong style="color: #2c00bf"><?= html_escape($review['fullname']) ?></strong>
+                                <p><strong><?= html_escape($review['fullname']) ?></strong>
                                     <span class="date-review"><i class="fa-regular fa-clock"></i>
                                         <?= html_escape($review['date_review']) ?></span>
                                 </p>

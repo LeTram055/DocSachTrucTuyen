@@ -38,6 +38,47 @@ $(document).ready(function() {
     });
 });
 
+//night mode
+
+// $(document).ready(function() {
+//     // Kiểm tra trạng thái chế độ ban đêm khi trang web được tải
+//     var nightModeEnabled = localStorage.getItem('nightModeEnabled');
+//     if (nightModeEnabled === 'true') {
+//         $("body").addClass("night-mode");
+//     }
+    
+//     // Xử lý sự kiện click trên nút chế độ ban đêm
+//     $("#nightModeToggle").click(function() {
+//         // Đảo ngược trạng thái chế độ ban đêm
+//         nightModeEnabled = !nightModeEnabled;
+//         // Lưu trạng thái chế độ ban đêm vào localStorage
+//         localStorage.setItem('nightModeEnabled', nightModeEnabled);
+//         // Áp dụng trạng thái chế độ ban đêm cho toàn bộ trang web
+//         $("body").toggleClass("night-mode");
+//     });
+// });
+
+$(document).ready(function() {
+    var nightModeEnabled = localStorage.getItem('nightModeEnabled');
+    nightModeEnabled = nightModeEnabled === 'true';
+
+    // Cập nhật trạng thái của nút chuyển
+    $("#nightModeToggle").prop("checked", nightModeEnabled);
+
+    $("body").toggleClass("night-mode", nightModeEnabled);
+
+    // Xử lý sự kiện click trên nút chế độ ban đêm
+    $("#nightModeToggle").click(function() {
+        nightModeEnabled = !nightModeEnabled;
+        
+        localStorage.setItem('nightModeEnabled', nightModeEnabled);
+        $("body").toggleClass("night-mode", nightModeEnabled);
+    });
+});
+
+
+
+
 //slidebar
 $(document).ready(function() {
     var currentPageUrl = window.location.href;
