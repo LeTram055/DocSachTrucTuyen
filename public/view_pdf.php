@@ -1,7 +1,6 @@
 <?php
 session_start();
 require_once __DIR__ . '/../src/connect.php';
-$current_position = 1;
 
 if (isset($_GET['id_book'])) {
     $id_book = $_GET['id_book'];
@@ -22,18 +21,15 @@ if (isset($_GET['id_book'])) {
             $sql_update = "UPDATE readingHistory SET date_reading = NOW() WHERE id_book = ? AND email = ?";
             $stmt_update = $pdo->prepare($sql_update);
             $stmt_update->execute([$id_book, $email]);
-
-            $sql_get_position = "SELECT position_reading FROM readingHistory WHERE id_book = ? AND email = ?";
-            $stmt_get_position = $pdo->prepare($sql_get_position);
-            $stmt_get_position->execute([$id_book, $email]);
-            $current_position = $stmt_get_position->fetchColumn();
+            
         } else {
             // Nếu chưa có thông tin, chèn bản ghi mới
-            $sql_insert = "INSERT INTO readingHistory (id_book, email, date_reading, position_reading) VALUES (?, ?, NOW(), ?)";
+            $sql_insert = "INSERT INTO readingHistory (id_book, email, date_reading) VALUES (?, ?, NOW())";
             $stmt_insert = $pdo->prepare($sql_insert);
-            $stmt_insert->execute([$id_book, $email, 1]);
-            $current_position = 1;
+            $stmt_insert->execute([$id_book, $email]);
         }
+
+        
     } else {
         // Nếu người dùng chưa đăng nhập, hiển thị thông báo yêu cầu đăng nhập
         echo '<script>alert("Vui lòng đăng nhập để lưu thông tin sách đã đọc.");</script>';
@@ -45,29 +41,18 @@ if (isset($_GET['id_book'])) {
     $stmt = $pdo->prepare($sql);
     $stmt->execute([$id_book]);
     $pdf_path = $stmt->fetch(PDO::FETCH_ASSOC);
-
-
 }
-
-if (isset($_POST['position_reading'])) {
-        
-        $currentPage = $_POST['position_reading'];
-        $sql_update_position = "UPDATE readingHistory SET position_reading = ? WHERE id_book = ? AND email = ?";
-        $stmt_update_position = $pdo->prepare($sql_update_position);
-        $stmt_update_position->execute([$currentPage ,$id_book, $email]);
-    }
 
 include_once __DIR__. '/../src/partials/header.php';
 ?>
 
 <div class="container flex-grow-1">
-    <input type="hidden" id="position-reading" name="position-reading" value="<?= $current_position ?>">
+
+    <iframe id="view-pdf" src="<?= $pdf_path['file_book'] ?>" width="
+        100%" height="680px"></iframe>
 
 
-    <iframe id="view-pdf" src="<?= $pdf_path['file_book'] ?>#page=<?= $current_position ?>" width="
-        100%" height="650px"></iframe>
 </div>
-
 
 <?php
 include_once __DIR__. '/../src/partials/footer.php'

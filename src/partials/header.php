@@ -31,6 +31,7 @@ if (session_status() === PHP_SESSION_NONE) {
         crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="css/style.css" />
 
+
 </head>
 
 <body class="d-flex flex-column min-vh-100">

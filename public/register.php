@@ -64,7 +64,7 @@ include_once __DIR__. '/../src/partials/header.php'
 
 <div class="container flex-grow-1">
     <div class="row justify-content-center">
-        <div class="col-lg-6">
+        <div class="col-lg-6 border-form">
             <h2 class="text-center my-4">ĐĂNG KÝ</h2>
             <form id="registerForm" method="post" enctype="multipart/form-data">
                 <div class="mb-3">
@@ -109,7 +109,10 @@ include_once __DIR__. '/../src/partials/header.php'
                     <span class="text-danger"><?= $errors['password_confirm'] ?></span>
                     <?php endif ?>
                 </div>
-                <button type="submit" class="btn btn-primary">Đăng ký</button>
+                <div class="text-center m-3">
+                    <button type="submit" class="btn btn-primary">Đăng ký</button>
+                </div>
+
             </form>
             <div class="text-center my-3">
                 <p>Bạn đã có tài khoản? <a href="login.php">Đăng nhập ngay</a>.</p>

@@ -27,10 +27,23 @@ $stmt->execute([$email]);
 $rows = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
 // Truy vấn để lấy số sách đã đọc của người dùng
-$sqlTotalBooks = "SELECT COUNT(*) AS total_books FROM readingHistory WHERE email = ?";
-$stmtTotalBooks = $pdo->prepare($sqlTotalBooks);
-$stmtTotalBooks->execute([$email]);
-$totalBooks = $stmtTotalBooks->fetch(PDO::FETCH_ASSOC)['total_books'];
+$sql_totalBooks = "SELECT COUNT(*) AS total_books FROM readingHistory WHERE email = ?";
+$stmt_totalBooks = $pdo->prepare($sql_totalBooks);
+$stmt_totalBooks->execute([$email]);
+$totalBooks = $stmt_totalBooks->fetch(PDO::FETCH_ASSOC)['total_books'];
+
+$sql_date = "SELECT date_reading
+            FROM readingHistory
+            WHERE email = ?
+            ORDER BY date_reading DESC
+            LIMIT 1";
+$stmt_date = $pdo->prepare($sql_date);
+$stmt_date->execute([$email]);
+$date = '';
+$row = $stmt_date->fetch(PDO::FETCH_ASSOC);
+if ($row !== false) {
+    $date = $row['date_reading'];
+}
 
 
 
@@ -50,6 +63,9 @@ include_once __DIR__. '/../src/partials/header.php'
                     <p><strong>Email:</strong> <?php echo $email; ?></p>
                     <p><strong>Tên:</strong> <?php echo $fullname ?></p>
                     <p><strong>Số sách đã đọc:</strong> <?php echo $totalBooks; ?></p>
+                    <?php if ($date !== '') :?>
+                    <p><strong>Ngày đọc sách gần nhất:</strong> <?php echo date("d/m/Y", strtotime($date)); ?></p>
+                    <?php endif;?>
 
                     <div class="form-check form-switch form-check-reverse d-flex justify-content-start">
                         <label class="form-check-label" for="nightModeToggle">Chế độ nền tối: &nbsp;</label>

@@ -9,6 +9,18 @@ $stmt_genre->execute();
 $genres = $stmt_genre->fetchAll(PDO::FETCH_ASSOC);
 
 
+$sql_popular = "SELECT b.id_book, b.name_book, b.image_book, COUNT(r.id_book) AS reading_count
+        FROM book b
+        LEFT JOIN readinghistory r 
+        ON b.id_book = r.id_book
+        GROUP BY b.id_book
+        ORDER BY reading_count DESC
+        LIMIT 4";
+$stmt_popular = $pdo->prepare($sql_popular);
+$stmt_popular->execute();
+$popular = $stmt_popular->fetchAll(PDO::FETCH_ASSOC);
+
+
 include_once __DIR__. '/../src/partials/header.php'
 ?>
 
@@ -45,6 +57,30 @@ include_once __DIR__. '/../src/partials/header.php'
         </div>
 
     </div>
+
+    <div class="row my-5">
+        <div class="row">
+            <div class="col-6">
+                <h2>SÁCH PHỔ BIẾN</h2>
+            </div>
+
+        </div>
+        <hr class="line">
+        <div class="row justify-content-center">
+            <?php foreach ($popular as $row) : ?>
+            <div class="col-md-3 col-sm-6">
+                <a href="detail_book.php?id_book=<?= $row['id_book'] ?>" class="book-link">
+                    <div class="book-item">
+                        <img src="<?= $row['image_book'] ?>" alt="<?= html_escape($row['name_book']) ?>"
+                            class="img-fluid book-image">
+                        <h5><?= html_escape($row['name_book']) ?></h5>
+                    </div>
+                </a>
+            </div>
+            <?php endforeach ?>
+        </div>
+    </div>
+
 
     <?php foreach ($genres as $genre) : ?>
     <?php

@@ -115,7 +115,7 @@ include_once __DIR__. '/../src/partials/header_ad.php'
                 <div class="col-md-4 col-sm-6">
                     <div class="text-center bg-info-subtle m-2 p-3 rounded-4">
 
-                        <p class="fs-4"><i class="fa-solid fa-pen-to-square"></i></p>
+                        <p class="fs-2"><i class="fa-solid fa-pen-to-square"></i></p>
                         <p class="fs-4">Đánh giá</p>
                         <p class="fs-1"><?= $total_book_reviews ?></p>
                     </div>

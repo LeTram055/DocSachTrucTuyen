@@ -34,7 +34,7 @@ include_once __DIR__. '/../src/partials/header.php';
     <div class="row my-5">
         <h2 class="text-center mb-4"><?= mb_strtoupper($genre) ?></h2>
         <div class="row">
-            <div class="dropdown">
+            <div class="dropdown ms-4">
                 <a class="btn btn-outline-dark dropdown-toggle sort-btn" href="#" role="button"
                     data-bs-toggle="dropdown" aria-expanded="false">
                     Sắp xếp

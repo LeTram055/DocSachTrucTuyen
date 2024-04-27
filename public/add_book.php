@@ -40,11 +40,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $file_folder = 'files/' . $name_genre . '/';
         $file_path = $file_folder . $file_name;
 
-        // Di chuyển hình ảnh vào thư mục lưu trữ
+        // Di chuyển file vào thư mục lưu trữ
         if (move_uploaded_file($file_tmp, $file_path)) {
-            $file = $file_path; // Gắn đường dẫn hình ảnh vào biến
+            $file = $file_path; // Gắn đường dẫn file vào biến
         } else {
-            $error_message = "Không thể tải lên hình sản phẩm.";
+            $error_message = "Không thể tải lên file sản phẩm.";
         }
     }
 
@@ -57,6 +57,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         echo '<script>alert("Mã sách đã tồn tại. Vui lòng chọn mã sách khác.");</script>';
        
     } else {
+
         // Thực hiện chèn loại vào cơ sở dữ liệu
         $sql = "INSERT INTO book (id_book, name_book, author, describe_book, image_book, file_book, id_genre) VALUES (?, ?, ?, ?, ?, ?, ?)";
         $stmt = $pdo->prepare($sql);
@@ -88,19 +89,17 @@ include_once __DIR__. '/../src/partials/header_ad.php'
         </div>
 
         <div class="col-10">
-            <div class="row justify-content-center m-4">
-                <h2 class="text-center">THÊM SÁCH</h2>
-            </div>
 
-            <div class="row mb-3">
+            <div class="row mt-3">
                 <div class="col">
                     <button class="btn btn-light" id="goBackBtn"><i class="fa-solid fa-chevron-left"></i></button>
                 </div>
             </div>
 
-            <div class="row m-3 p-0">
-                <div class="col">
-                    <form method="post" enctype="multipart/form-data" class="col-md-6 offset-md-3">
+            <div class="row justify-content-center">
+                <div class="col-6 border-form">
+                    <h2 class="text-center">THÊM SÁCH</h2>
+                    <form method="post" enctype="multipart/form-data">
 
                         <input type="hidden" name="id_book" value="<?= $id_book ?>">
 
@@ -142,7 +141,8 @@ include_once __DIR__. '/../src/partials/header_ad.php'
                         <div class="form-group m-1 my-3">
                             <label for="image">Ảnh bìa sách: </label>
                             <image id="book-preview" style="display: none;" alt="book" width="40px" height="60px">
-                                <input type="file" name="image" id="image" class="form-control-file" id="image" />
+                                <input type="file" name="image" id="image" class="form-control-file" id="image"
+                                    required />
                         </div>
 
                         <!-- File -->

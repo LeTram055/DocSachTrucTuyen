@@ -41,19 +41,17 @@ include_once __DIR__. '/../src/partials/header_ad.php'
         </div>
 
         <div class="col-10">
-            <div class="row justify-content-center m-4">
-                <h2 class="text-center">THÊM THỂ LOẠI</h2>
-            </div>
 
-            <div class="row mb-3 p-0">
+            <div class="row mt-3">
                 <div class="col">
                     <button class="btn btn-light" id="goBackBtn"><i class="fa-solid fa-chevron-left"></i></button>
                 </div>
             </div>
 
-            <div class="row m-3">
-                <div class="col">
-                    <form method="post" enctype="multipart/form-data" class="col-md-6 offset-md-3">
+            <div class="row justify-content-center">
+                <div class="col-6 border-form">
+                    <h2 class="text-center">THÊM THỂ LOẠI</h2>
+                    <form method="post" enctype="multipart/form-data">
 
                         <input type="hidden" name="id_genre" value="<?= $id_genre ?>">
 

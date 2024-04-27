@@ -51,7 +51,7 @@ include_once __DIR__. '/../src/partials/header.php'
 ?>
 <div class="container flex-grow-1">
     <div class="row justify-content-center">
-        <div class="col-lg-6">
+        <div class="col-lg-6 border-form">
             <h2 class="text-center my-4">ĐĂNG NHẬP</h2>
             <form method="post" enctype="multipart/form-data">
 
@@ -65,7 +65,10 @@ include_once __DIR__. '/../src/partials/header.php'
                         placeholder="Nhập mật khẩu" required>
 
                 </div>
-                <button type="submit" class="btn btn-primary">Đăng nhập</button>
+                <div class="text-center m-3">
+                    <button type="submit" class="btn btn-primary">Đăng nhập</button>
+                </div>
+
             </form>
             <div class="text-center mt-3">
                 <p>Bạn chưa có tài khoản? <a href="register.php">Đăng ký ngay</a>.</p>

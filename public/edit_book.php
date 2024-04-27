@@ -99,19 +99,17 @@ include_once __DIR__. '/../src/partials/header_ad.php'
         </div>
 
         <div class="col-10">
-            <div class="row justify-content-center m-4">
-                <h2 class="text-center">CẬP NHẬT SÁCH</h2>
-            </div>
 
-            <div class="row mb-3">
+            <div class="row mt-3">
                 <div class="col">
                     <button class="btn btn-light" id="goBackBtn"><i class="fa-solid fa-chevron-left"></i></button>
                 </div>
             </div>
 
-            <div class="row m-3 p-0">
-                <div class="col">
-                    <form method="post" enctype="multipart/form-data" class="col-md-6 offset-md-3">
+            <div class="row justify-content-center">
+                <div class="col-6 border-form">
+                    <h2 class="text-center">CẬP NHẬT SÁCH</h2>
+                    <form method="post" enctype="multipart/form-data">
 
                         <input type="hidden" name="id_book" value="<?= $id_book ?>">
 
@@ -151,15 +149,17 @@ include_once __DIR__. '/../src/partials/header_ad.php'
                                 height="60px">
                                 <?php endif; ?>
 
-                                <input value="<?= basename(html_escape($book['image_book'])) ?>" type="file"
-                                    name="image" id="image" class="form-control-file" id="image" />
+                                <input type="file" name="image" id="image" class="form-control-file" id="image" />
                         </div>
 
                         <!-- File -->
                         <div class="form-group m-1 my-3">
                             <label for="file">File pdf: </label>
-                            <input value="<?= basename(html_escape($book['file_book'])) ?>" type="file" name="file"
-                                class="form-control-file" id="file" accept=".pdf" required>
+                            <?php if (!empty($book['file_book']) && file_exists($book['file_book'])) : ?>
+                            <a class="link" href="<?= $book['file_book'] ?>"
+                                target="_blank"><?= basename(html_escape($book['file_book'])) ?></a>
+                            <?php endif; ?>
+                            <input type="file" name="file" class="form-control-file" id="file" accept=".pdf">
                         </div>
 
                         <!-- Tên thể loại -->
