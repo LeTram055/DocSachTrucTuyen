@@ -16,6 +16,11 @@ if ($id_book) {
     $stmt = $pdo->prepare($sql);
     $stmt->execute([$id_book]);
     $row = $stmt->fetch(PDO::FETCH_ASSOC);
+
+    $sql_read = "SELECT count(*) FROM readingHistory WHERE id_book = ?";
+    $stmt_read = $pdo->prepare($sql_read);
+    $stmt_read->execute([$id_book]);
+    $read = $stmt_read->fetchColumn();
 }
 
 //Nút yêu thích
@@ -86,6 +91,7 @@ include_once __DIR__. '/../src/partials/header.php';
                     <p style="text-align: justify;"><strong>Tác giả: </strong><?= html_escape($row['author']) ?></p>
                     <p style="text-align: justify;"><strong>Thể loại: </strong><?= html_escape($row['name_genre']) ?>
                     </p>
+                    <p style="text-align: justify;"><strong>Lượt đọc: </strong><?= $read ?></p>
                     <p style="text-align: justify;"><?= html_escape($row['describe_book']) ?></p>
                 </div>
 

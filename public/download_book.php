@@ -11,7 +11,7 @@ $book = $stmt->fetch(PDO::FETCH_ASSOC);
 
 if ($book) {
     // Đường dẫn đến tệp sách
-    $file_path = $book['file'];
+    $file_path = $book['file_book'];
 
     if (file_exists($file_path)) {
         header('Content-Type: application/pdf');
