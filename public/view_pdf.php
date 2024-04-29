@@ -47,6 +47,11 @@ include_once __DIR__. '/../src/partials/header.php';
 ?>
 
 <div class="container flex-grow-1">
+    <div class="row my-2 p-0">
+        <div class="col">
+            <button class="btn btn-light" id="goBackBtn"><i class="fa-solid fa-chevron-left"></i></button>
+        </div>
+    </div>
 
     <iframe id="view-pdf" src="<?= $pdf_path['file_book'] ?>" width="
         100%" height="680px"></iframe>
