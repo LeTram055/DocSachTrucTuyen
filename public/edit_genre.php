@@ -50,7 +50,7 @@ include_once __DIR__. '/../src/partials/header_ad.php'
 
             <div class="row justify-content-center">
                 <div class="col-6 border-form">
-                    <h2 class="text-center">THÊM THỂ LOẠI</h2>
+                    <h2 class="text-center">CẬP NHẬT THỂ LOẠI</h2>
                     <form method="post" enctype="multipart/form-data">
 
                         <input type="hidden" name="id_genre" value="<?= $id_genre ?>">

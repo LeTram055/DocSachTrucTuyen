@@ -73,7 +73,7 @@ include_once __DIR__. '/../src/partials/header_ad.php'
 
         <div class="col-10">
             <div class="row justify-content-center m-5">
-                <h2 class="text-center">SÁCH ĐƯỢC YÊU THÍCH</h2>
+                <h2 class="text-center">SÁCH ĐƯỢC ĐỌC</h2>
             </div>
 
             <div class="row mb-3">

@@ -27,10 +27,16 @@ $stmt->execute([$email]);
 $rows = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
 // Truy vấn để lấy số sách đã đọc của người dùng
-$sql_totalBooks = "SELECT COUNT(*) AS total_books FROM readingHistory WHERE email = ?";
-$stmt_totalBooks = $pdo->prepare($sql_totalBooks);
-$stmt_totalBooks->execute([$email]);
-$totalBooks = $stmt_totalBooks->fetch(PDO::FETCH_ASSOC)['total_books'];
+$sql_read = "SELECT COUNT(*) AS read_book FROM readingHistory WHERE email = ?";
+$stmt_read = $pdo->prepare($sql_read);
+$stmt_read->execute([$email]);
+$read = $stmt_read->fetch(PDO::FETCH_ASSOC)['read_book'];
+
+// Truy vấn để lấy số sách đã đọc của người dùng
+$sql_favourite = "SELECT COUNT(*) AS favourite_book FROM favourite WHERE email = ?";
+$stmt_favourite = $pdo->prepare($sql_favourite);
+$stmt_favourite->execute([$email]);
+$favourite = $stmt_favourite->fetch(PDO::FETCH_ASSOC)['favourite_book'];
 
 $sql_date = "SELECT date_reading
             FROM readingHistory
@@ -62,7 +68,8 @@ include_once __DIR__. '/../src/partials/header.php'
 
                     <p><strong>Email:</strong> <?php echo $email; ?></p>
                     <p><strong>Tên:</strong> <?php echo $fullname ?></p>
-                    <p><strong>Số sách đã đọc:</strong> <?php echo $totalBooks; ?></p>
+                    <p><strong>Số sách đã đọc:</strong> <?php echo $read; ?></p>
+                    <p><strong>Số sách yêu thích:</strong> <?php echo $favourite; ?></p>
                     <?php if ($date !== '') :?>
                     <p><strong>Ngày đọc sách gần nhất:</strong> <?php echo date("d/m/Y", strtotime($date)); ?></p>
                     <?php endif;?>
