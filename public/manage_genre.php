@@ -63,7 +63,7 @@ include_once __DIR__. '/../src/partials/header_ad.php'
         </div>
 
         <div class="col-10">
-            <div class="row justify-content-center m-5">
+            <div class="row justify-content-center m-4">
                 <h2 class="text-center">QUẢN LÝ LOẠI SÁCH</h2>
             </div>
 
