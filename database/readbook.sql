@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Máy chủ: 127.0.0.1
--- Thời gian đã tạo: Th4 26, 2024 lúc 07:56 AM
+-- Thời gian đã tạo: Th5 01, 2024 lúc 09:07 AM
 -- Phiên bản máy phục vụ: 10.4.32-MariaDB
 -- Phiên bản PHP: 8.2.12
 
@@ -32,7 +32,7 @@ CREATE TABLE `book` (
   `name_book` varchar(100) NOT NULL,
   `author` varchar(50) DEFAULT NULL,
   `describe_book` varchar(1000) DEFAULT NULL,
-  `image_book` varchar(200) DEFAULT NULL,
+  `image_book` varchar(200) NOT NULL,
   `file_book` varchar(200) NOT NULL,
   `id_genre` varchar(10) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
@@ -60,7 +60,7 @@ INSERT INTO `book` (`id_book`, `name_book`, `author`, `describe_book`, `image_bo
 ('s016', 'Ba Chàng Ngốc', 'Chetan Bhagat', '\'Năm 2009, câu chuyện về chúng tôi đã được đạo diễn Rajkumar Hirani chuyển thể thành Ba chàng ngốc – bộ phim Bollywood phá mọi kỷ lục phòng vé để trở thành bộ phim ăn khách nhất lịch sử Ấn Độ. Còn bây giờ, nào, hãy cùng chúng tôi trải nghiệm những năm tháng tuổi trẻ điên rồ nổi loạn!\'', 'images/Truyện Cười - Tiếu Lâm/ba-chang-ngoc.jpg', 'files/Truyện Cười - Tiếu Lâm/ba-chang-ngoc.pdf', 'l003'),
 ('s017', 'Tiếng cười Bác Ba Phi', 'Nhiều tác giả', 'Bác Ba Phi là một nhân vật trong văn học dân gian. Ông là nhân vật chính trong những câu chuyện kể về cuộc sống sinh hoạt thường ngày nhưng được cường điệu quá đáng (như rắn tát cá, chọi đá làm máy bay rơi, leo cây ớt té gãy chân…) và được trình bày một cách tự nhiên khiến người nghe hoàn toàn bất ngờ và bật cười. Ông là nhân vật cận đại nhất trong lịch sử kho tàng truyện trạng (nói dóc) của văn học Việt Nam.', 'images/Truyện Cười - Tiếu Lâm/tieng-cuoi-bac-ba-phi.jpg', 'files/Truyện Cười - Tiếu Lâm/tieng-cuoi-bac-ba-phi.pdf', 'l003'),
 ('s018', 'Truyện Xiển Bột', ' Khuyết Danh', 'Xiển Bột hay Xiển Ngộ là một nhân vật dân gian được cho là có thật, tên là Nguyễn Xiển, sống ở cuối thời phong kiến của Việt Nam, tại làng Hoằng Bột, nay là xã Hoằng Lộc, huyện Hoằng Hóa, Thanh Hóa. Ông được cho là hậu duệ của Trạng Quỳnh (chắt của Trạng Quỳnh), tương truyền khi mới sinh ra, Xiển mặt vuông chữ điền, tai to như tai phật, mồm rộng, mắt sáng.', 'images/Truyện Cười - Tiếu Lâm/truyen-xien-bot.jpg', 'files/Truyện Cười - Tiếu Lâm/truyen-xien-bot.pdf', 'l003'),
-('s019', 'Ba Giai – Tú Xuất', 'Khuyết Danh', 'Tương truyền Ba Giai là tác giả các bài Hà thành chính khí ca, Hà thành hiểu vọng và Vịnh đề đốc Lê Văn Trinh. Qua đó, tác giả ca ngợi bậc trung dũng và phê phán những viên quan sợ chết, đã chạy trốn hay đầu hàng quân xâm lược. Mãi trăm năm sau, những giai thoại Ba Giai – Tú Xuất được dựng lại thành những vở tuồng chèo dân gian, kịch hài hiện đại, được xuất bản thành sách, truyện tranh.', 'images/Truyện Cười - Tiếu Lâm/ba-giai-tu-xuat.jpg', 'files/Truyện Cười - Tiếu Lâm/ba-giai-tu-xuat.jpg', 'l003'),
+('s019', 'Ba Giai – Tú Xuất', 'Khuyết Danh', 'Tương truyền Ba Giai là tác giả các bài Hà thành chính khí ca, Hà thành hiểu vọng và Vịnh đề đốc Lê Văn Trinh. Qua đó, tác giả ca ngợi bậc trung dũng và phê phán những viên quan sợ chết, đã chạy trốn hay đầu hàng quân xâm lược. Mãi trăm năm sau, những giai thoại Ba Giai – Tú Xuất được dựng lại thành những vở tuồng chèo dân gian, kịch hài hiện đại, được xuất bản thành sách, truyện tranh.', 'images/Truyện Cười - Tiếu Lâm/ba-giai-tu-xuat.jpg', 'files/Truyện Cười - Tiếu Lâm/ba-giai-tu-xuat.pdf', 'l003'),
 ('s020', 'Truyện Cười Song Ngữ Anh – Việt', 'Chưa Rõ', 'Ngôn ngữ trong các câu chuyện phần lớn là ngôn ngữ đời sống hàng ngày, không có tính chất trang trọng (informal) dùng để nói chuyện với bạn bè, với những người thân thuộc xung quanh. Những mẩu truyện cười trong tập sách này có số lượng từ vựng phong phú xung quanh các chủ đề đời sống hàng ngày giúp các bạn xem việc sử dụng từ và ngữ pháp trong việc học tiếng Anh, giúp làm phong phú số từ vựng của các bạn.', 'images/Truyện Cười - Tiếu Lâm/truyen-cuoi-song-ngu-anh-viet.jpg', 'files/Truyện Cười - Tiếu Lâm/truyen-cuoi-song-ngu-anh-viet.pdf', 'l003'),
 ('s021', 'Truyện Kiều', 'Nguyễn Du', 'Truyện Kiều là tiểu thuyết viết bằng thơ lục bát. Truyện phản ánh xã hội đương thời thông qua cuộc đời của nhân vật chính Vương Thuý Kiều. Xuyên suốt tác phẩm là chữ “tâm” theo như Nguyễn Du đã tâm niệm “Linh Sơn chỉ tại nhữ tâm đầu” (nghĩa là “Linh Sơn chỉ ở lòng người thôi”). Ngày nay, Truyện Kiều của Nguyễn Du là một trong những tác phẩm văn học Việt Nam được giới thiệu rộng rãi nhất đến với các du khách cũng như các nhà nghiên cứu nước ngoài.', 'images/Văn Học Việt Nam/truyen-kieu.jpg', 'files/Văn Học Việt Nam/truyen-kieu.pdf', 'l004'),
 ('s022', 'Tắt Đèn', 'Ngô Tất Tố', 'Mở đầu tác phẩm là không khí căng thẳng, ngột ngạt của một làng quê trong những ngày sưu thuế. Cổng làng đóng lại, công việc cày bừa đình đốn, bọn lý trưởng, trương tuần chửi bới, quát tháo om sòm; Mấy tên cai lệ, lính cơ tay thước, roi song, dây thừng đi tróc người thiếu thuế. Tiếng trống, mõ, tù và inh ỏi, tiếng thét lác, đánh đập, tiếng kêu khóc thảm thiết vang lên như trong một cuộc săn người…', 'images/Văn Học Việt Nam/tat-den.jpg', 'files/Văn Học Việt Nam/tat-den.pdf', 'l004'),
@@ -80,7 +80,7 @@ INSERT INTO `book` (`id_book`, `name_book`, `author`, `describe_book`, `image_bo
 ('s036', 'Mặc Kệ Thiên Hạ – Sống Như Người Nhật', 'Mari Tamagawa', 'Cuốn sách gối đầu giường cho những người hay lo lắng, sợ hãi và luôn thấy mình kém may mắn. Dành cho những ai muốn được sống là chính mình, cuộc đời của mình, tuổi trẻ của mình. Mặc hệ thiên hạ, sống như người Nhật chính là cuốn sách dành cho những người muốn đi bằng chính đôi chân mình. Dành cho những người muốn gạt bỏ những nỗi sợ bởi chính tay mình, chứ không cầu cứu bất kì sự trợ giúp nào. Hãy thử sống một ngày “mặc kệ thiên hạ”, mặc kệ những lời nhận xét từ người khác. Hãy thử sống một ngày bạn cho phép mình từ bỏ, từ bỏ những thứ khó khăn, ngổn ngang lo lắng. Hãy thử sống một ngày bạn trân trọng mọi cung bậc cảm xúc bên trong con người bạn.', 'images/Tâm Lý - Kỹ Năng Sống/mac-ke-thien-ha-song-nhu-nguoi-nhat.jpg', 'files/Tâm Lý - Kỹ Năng Sống/mac-ke-thien-ha-song-nhu-nguoi-nhat.pdf', 'l006'),
 ('s037', '7 Thói Quen Để Thành Đạt', 'Stephen R.Covey', 'Cùng với những cuốn sách kinh điển như Đắc Nhân Tâm, Nhà Giả Kim, 7 Thói Quen Để Thành Đạt (The 7 Habits of Highly Effective People) của tác giả Stephen R. Covey luôn được mọi người đón đọc và đánh giá rất cao như một cẩm nang rèn luyện để đi đến thành công. Với 20 triệu bản phát hành, được dịch ra hơn 40 ngôn ngữ, ngay từ lần xuất bản đầu tiên, 7 Thói Quen Để Thành Đạt đã trở thành một trong những cuốn sách có giá trị và nổi tiếng nhất thế giới về thể loại self-help – tự rèn luyện bản thân để thành công trong cuộc sống.', 'images/Tâm Lý - Kỹ Năng Sống/7-thoi-quen-de-thanh-dat.jpg', 'files/Tâm Lý - Kỹ Năng Sống/7-thoi-quen-de-thanh-dat.pdf', 'l006'),
 ('s038', 'Đời Ngắn Đừng Ngủ Dài', 'Robin Sharma', '“Mọi lựa chọn đều giá trị. Mọi bước đi đều quan trọng. Cuộc sống vẫn diễn ra theo cách của nó, không phải theo cách của ta. Hãy kiên nhẫn. Tin tưởng. Hãy giống như người thợ cắt đá, đều đặn từng nhịp, ngày qua ngày. Cuối cùng, một nhát cắt duy nhất sẽ phá vỡ tảng đá và lộ ra viên kim cương. Người tràn đầy nhiệt huyết và tận tâm với việc mình làm không bao giờ bị chối bỏ. Sự thật là thế.” .Bằng những lời chia sẻ thật ngắn gọn, dễ hiểu về những trải nghiệm và suy ngẫm trong đời, Robin Sharma tiếp tục phong cách viết của ông từ cuốn sách Điều vĩ đại đời thường để mang đến cho độc giả những bài viết như lời tâm sự, vừa chân thành vừa sâu sắc.', 'images/Tâm Lý - Kỹ Năng Sống/doi-ngan-dung-ngu-dai.jpg', 'files/Tâm Lý - Kỹ Năng Sống/doi-ngan-dung-ngu-dai.pdf', 'l006'),
-('s039', 'Làm Ít Được Nhiều', 'Chin Ning Chu', 'Trong thời đại thay đổi nhanh chóng và cạnh tranh gay gắt hiện nay, chúng ta thường tự vướng vào một quan điểm quá mệt mỏi là tin rằng thành công chỉ đến khi phải đánh đổi bằng sự cân bằng của cuộc sống. Tuy nhiên, hầu hết những người thành công lại không nhất thiết phải làm việc vất vả. Trong quyển Làm ít được nhiều, tác giả có sách bán chạy Ching-Nin-Chu giải thích cách làm thế nào để giải tỏa cái vòng lẩn quẩn đó và học cách để vừa bình an vừa hiệu quả cùng một lúc.', 'images/Tâm Lý - Kỹ Năng Sống/lam-it-duoc-nhieu.jpg', 'filees/Tâm Lý - Kỹ Năng Sống/lam-it-duoc-nhieu.pdf', 'l006'),
+('s039', 'Làm Ít Được Nhiều', 'Chin Ning Chu', 'Trong thời đại thay đổi nhanh chóng và cạnh tranh gay gắt hiện nay, chúng ta thường tự vướng vào một quan điểm quá mệt mỏi là tin rằng thành công chỉ đến khi phải đánh đổi bằng sự cân bằng của cuộc sống. Tuy nhiên, hầu hết những người thành công lại không nhất thiết phải làm việc vất vả. Trong quyển Làm ít được nhiều, tác giả có sách bán chạy Ching-Nin-Chu giải thích cách làm thế nào để giải tỏa cái vòng lẩn quẩn đó và học cách để vừa bình an vừa hiệu quả cùng một lúc.', 'images/Tâm Lý - Kỹ Năng Sống/lam-it-duoc-nhieu.jpg', 'files/Tâm Lý - Kỹ Năng Sống/lam-it-duoc-nhieu.pdf', 'l006'),
 ('s040', 'Khéo Ăn Nói Sẽ Có Được Thiên Hạ', 'Trác Nhã', 'Khéo Ăn Nói Sẽ Có Được Thiên Hạ là một cuốn sách tự phát triển bản thân đầy sức hút và độc đáo. Tác giả không chỉ đề cập đến kỹ năng giao tiếp, mà còn khám phá sâu hơn vào các khía cạnh của sự tự tin, sự tự quản lý và mối quan hệ giữa con người. Một điểm mạnh của cuốn sách là cách tác giả trình bày thông tin một cách rõ ràng và dễ hiểu. Bằng cách sử dụng ví dụ cụ thể và câu chuyện từ cuộc sống thực tế, sách giúp người đọc hiểu rõ hơn về những nguyên tắc cơ bản của giao tiếp hiệu quả. Điều này làm cho việc áp dụng những kiến thức từ sách vào cuộc sống hàng ngày trở nên dễ dàng hơn.', 'images/Tâm Lý - Kỹ Năng Sống/kheo-an-noi-se-co-duoc-thien-ha.jpg', 'files/Tâm Lý - Kỹ Năng Sống/kheo-an-noi-se-co-duoc-thien-ha.pdf', 'l006'),
 ('s041', 'Đố Khéo Giảng Hay Nâng Cao Trí Tuệ', 'Thái Quỳnh Tân', 'Làm thế nào để thoát chết trong gang tấc, qua mặt được Conan Doyle, rồi biết được cả mánh cho gà ăn của Gia Cát Lượng, cách xếp bánh của Gauss v.v…? Bằng cách thể hiện sinh động dưới hình thức những mẩu chuyện nhỏ, hấp dẫn cùng những lời giải đáp ngắn gọn; cuốn sách này khiến độc giả vừa thú vị theo dõi vừa tiếp thu được những kiến thức nâng cao trí tuệ.', 'images/Tâm Lý - Kỹ Năng Sống/do-kheo-giang-hay-nang-cao-tri-tue.jpg', 'files/Tâm Lý - Kỹ Năng Sống/do-kheo-giang-hay-nang-cao-tri-tue.pdf', 'l006'),
 ('s042', 'Sức Mạnh Của Thói Quen', 'Charles Duhigg', 'Sức mạnh của thói quen (Power of Habits) sẽ làm bạn say mê bởi những ý tưởng thú vị, những nghiên cứu ấn tượng, những phân tích thông minh và những lời khuyên thiết thực. Những độc giả đưa cuốn sách này vào danh sách bestseller của Thời báo New York suốt 40 tuần đã kiểm chứng điều đó.', 'images/Tâm Lý - Kỹ Năng Sống/suc-manh-cua-thoi-quen.jpg', 'files/Tâm Lý - Kỹ Năng Sống/suc-manh-cua-thoi-quen.pdf', 'l006'),
@@ -103,9 +103,18 @@ CREATE TABLE `favourite` (
 --
 
 INSERT INTO `favourite` (`email`, `id_book`) VALUES
+('hannguyen00@gmail.com', 's017'),
+('hannguyen00@gmail.com', 's036'),
+('lenam789@gmail.com', 's002'),
 ('lenam789@gmail.com', 's022'),
+('nghung12@gmail.com', 's010'),
+('nghung12@gmail.com', 's031'),
+('nghung12@gmail.com', 's040'),
 ('ngoc4567@gmail.com', 's002'),
 ('ngoc4567@gmail.com', 's015'),
+('tramb2105564@student.ctu.edu.vn', 's002'),
+('tramb2105564@student.ctu.edu.vn', 's003'),
+('tramb2105564@student.ctu.edu.vn', 's016'),
 ('tramle055@gmail.com', 's001'),
 ('tramle055@gmail.com', 's002'),
 ('tramle055@gmail.com', 's011'),
@@ -143,25 +152,50 @@ INSERT INTO `genre` (`id_genre`, `name_genre`) VALUES
 CREATE TABLE `readinghistory` (
   `date_reading` date NOT NULL,
   `email` varchar(100) NOT NULL,
-  `id_book` varchar(10) NOT NULL,
-  `position_reading` int(11) NOT NULL DEFAULT 0
+  `id_book` varchar(10) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
 -- Đang đổ dữ liệu cho bảng `readinghistory`
 --
 
-INSERT INTO `readinghistory` (`date_reading`, `email`, `id_book`, `position_reading`) VALUES
-('2024-04-24', 'tramle055@gmail.com', 's001', 5),
-('2024-04-25', 'ngoc4567@gmail.com', 's015', 8),
-('2024-04-25', 'ngoc4567@gmail.com', 's022', 9),
-('2024-04-25', 'ngoc4567@gmail.com', 's007', 20),
-('2024-04-25', 'tramle055@gmail.com', 's017', 7),
-('2024-04-25', 'tramle055@gmail.com', 's015', 12),
-('2024-04-25', 'lenam789@gmail.com', 's012', 55),
-('2024-04-26', 'ngoc4567@gmail.com', 's021', 4),
-('2024-04-26', 'ngoc4567@gmail.com', 's002', 1),
-('2024-04-26', 'ngoc4567@gmail.com', 's010', 35);
+INSERT INTO `readinghistory` (`date_reading`, `email`, `id_book`) VALUES
+('2024-04-29', 'hannguyen00@gmail.com', 's002'),
+('2024-04-29', 'hannguyen00@gmail.com', 's017'),
+('2024-04-29', 'hannguyen00@gmail.com', 's020'),
+('2024-04-29', 'hannguyen00@gmail.com', 's028'),
+('2024-04-29', 'lenam789@gmail.com', 's001'),
+('2024-04-29', 'lenam789@gmail.com', 's002'),
+('2024-04-29', 'lenam789@gmail.com', 's012'),
+('2024-04-29', 'lenam789@gmail.com', 's015'),
+('2024-04-29', 'lenam789@gmail.com', 's017'),
+('2024-04-29', 'lenam789@gmail.com', 's021'),
+('2024-04-29', 'lenam789@gmail.com', 's022'),
+('2024-04-29', 'lenam789@gmail.com', 's030'),
+('2024-04-29', 'lenam789@gmail.com', 's036'),
+('2024-04-29', 'nghung12@gmail.com', 's010'),
+('2024-04-29', 'nghung12@gmail.com', 's018'),
+('2024-04-29', 'nghung12@gmail.com', 's022'),
+('2024-04-29', 'nghung12@gmail.com', 's024'),
+('2024-04-29', 'nghung12@gmail.com', 's031'),
+('2024-04-29', 'nghung12@gmail.com', 's035'),
+('2024-04-29', 'ngoc4567@gmail.com', 's002'),
+('2024-04-29', 'ngoc4567@gmail.com', 's007'),
+('2024-04-27', 'ngoc4567@gmail.com', 's010'),
+('2024-04-29', 'ngoc4567@gmail.com', 's015'),
+('2024-04-27', 'ngoc4567@gmail.com', 's021'),
+('2024-04-29', 'ngoc4567@gmail.com', 's022'),
+('2024-04-29', 'tramb2105564@student.ctu.edu.vn', 's002'),
+('2024-05-01', 'tramb2105564@student.ctu.edu.vn', 's019'),
+('2024-05-01', 'tramb2105564@student.ctu.edu.vn', 's020'),
+('2024-04-29', 'tramb2105564@student.ctu.edu.vn', 's022'),
+('2024-04-29', 'tramb2105564@student.ctu.edu.vn', 's035'),
+('2024-04-27', 'tramle055@gmail.com', 's001'),
+('2024-04-29', 'tramle055@gmail.com', 's002'),
+('2024-04-26', 'tramle055@gmail.com', 's009'),
+('2024-04-29', 'tramle055@gmail.com', 's010'),
+('2024-04-25', 'tramle055@gmail.com', 's015'),
+('2024-04-29', 'tramle055@gmail.com', 's017');
 
 -- --------------------------------------------------------
 
@@ -194,7 +228,22 @@ INSERT INTO `review` (`id_review`, `content`, `date_review`, `email`, `id_book`)
 (12, 'truyện rất hài hước', '2024-04-25', 'ngoc4567@gmail.com', 's015'),
 (13, 'truyện rất cảm động', '2024-04-25', 'ngoc4567@gmail.com', 's022'),
 (15, 'truyện thú vị lắm.', '2024-04-25', 'lenam789@gmail.com', 's015'),
-(16, 'sách rất hay và hữu ích.', '2024-04-25', 'lenam789@gmail.com', 's012');
+(16, 'sách rất hay và hữu ích.', '2024-04-25', 'lenam789@gmail.com', 's012'),
+(23, 'sách bổ ích', '2024-04-28', 'nghung12@gmail.com', 's031'),
+(24, 'truyện rất hay', '2024-04-28', 'nghung12@gmail.com', 's022'),
+(25, 'Trong quyển sách này tôi đã tìm được một cái nhìn mới thay đổi toàn bộ nếp nghĩ, nếp sống và cách rèn luyện sức khỏe.', '2024-04-29', 'nghung12@gmail.com', 's010'),
+(26, 'truyện hài hước', '2024-04-29', 'nghung12@gmail.com', 's018'),
+(27, 'Truyện phản ánh xã hội đương thời.', '2024-04-29', 'lenam789@gmail.com', 's021'),
+(28, 'cách viết súc tích và thuyết phục', '2024-04-29', 'nghung12@gmail.com', 's035'),
+(29, 'sách giúp tôi nấu được nhiều món ngon.', '2024-04-29', 'ngoc4567@gmail.com', 's002'),
+(30, 'Cuốn sách này giúp tôi nâng cao tay nghề nấu nướng của mình', '2024-04-29', 'ngoc4567@gmail.com', 's007'),
+(31, 'sách hay', '2024-04-29', 'nghung12@gmail.com', 's024'),
+(32, 'tác phẩm hay và nổi tiếng nhất của nền văn chương Việt Nam', '2024-04-29', 'hannguyen00@gmail.com', 's028'),
+(33, 'Ngôn ngữ trong các câu chuyện phần lớn là ngôn ngữ đời sống hàng ngày', '2024-04-29', 'hannguyen00@gmail.com', 's020'),
+(34, 'công thức chỉ rất đơn giản dễ làm', '2024-04-29', 'hannguyen00@gmail.com', 's002'),
+(35, 'Hướng dẫn rất chi tiết.', '2024-04-29', 'tramb2105564@student.ctu.edu.vn', 's002'),
+(36, 'truyện rất hay', '2024-05-01', 'tramb2105564@student.ctu.edu.vn', 's019'),
+(37, 'Truyện tái hiện đời sống những năm chiến tranh hay và sâu sắc', '2024-05-01', 'tramb2105564@student.ctu.edu.vn', 's022');
 
 -- --------------------------------------------------------
 
@@ -215,9 +264,12 @@ CREATE TABLE `user` (
 
 INSERT INTO `user` (`email`, `fullname`, `password`, `role`) VALUES
 ('admin123@gmail.com', 'admin', '$2y$10$wMDqe4CymdiP1A6UgQwiY.1rbXfM5Zb7/pGUWWHKNuqWKntZL0O3a', 'admin'),
+('hannguyen00@gmail.com', 'Nguyễn Ngọc Hân', '$2y$10$L.fEiAd7zOZq/Kwbxypgu.qAetLSjz5LOfwwUTGy/.lXl1Aj.mEW.', ''),
 ('lenam789@gmail.com', 'Lê Thanh Nam', '$2y$10$BnU4h5OW.1R2cQfNyuKkT.Y0C6Qu45Nm/6DyPX6rvar6EWzCuKR5q', ''),
+('nghung12@gmail.com', 'Nguyễn Quốc Hưng', '$2y$10$dwqkNZs4tuwJc1I9SRs/qOWRub4wYkX8noWRyUW4tHhzKbN39LXHK', ''),
 ('ngoc4567@gmail.com', 'Lê Kim Ngọc', '$2y$10$O./Yrbv67BqJHwve.B8wL.HQsALAPtp6L/w91EfZteXpssPQd0JMG', ''),
-('tramle055@gmail.com', 'Lê Thị Ngọc Trâm', '$2y$10$cXHk.nfnAe4QnAL3Q3a7JeyYefPdppTZE.FaPjiZC5Q0r7axJPja2', '');
+('tramb2105564@student.ctu.edu.vn', 'Lê Thị Ngọc Trâm', '$2y$10$6iMum94g.DFfGUBMOtV1meAPx/G4S80cGenLyPN7bwytzouqxCnGK', ''),
+('tramle055@gmail.com', 'Lê Ngọc Trâm', '$2y$10$cXHk.nfnAe4QnAL3Q3a7JeyYefPdppTZE.FaPjiZC5Q0r7axJPja2', '');
 
 --
 -- Chỉ mục cho các bảng đã đổ
@@ -274,7 +326,7 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT cho bảng `review`
 --
 ALTER TABLE `review`
-  MODIFY `id_review` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
+  MODIFY `id_review` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=38;
 
 --
 -- Các ràng buộc cho các bảng đã đổ
