@@ -66,7 +66,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         // Kiểm tra kết quả cập nhật
         if ($result) {
             // Thêm loại thành công
-            redirect("manage_book.php");
+            echo "<script>
+                        alert ('Thêm sách thành công!');
+                        window.location.href = 'manage_book.php';
+                    </script>";
+            
         } else {
             // Thêm loại không thành công
             echo '<script>alert("Thêm sách không thành công. Vui lòng kiểm tra lại thông tin.");</script>';

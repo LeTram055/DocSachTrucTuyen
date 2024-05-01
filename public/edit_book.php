@@ -74,10 +74,13 @@ if (isset($_GET['id_book'])) {
 
         // Kiểm tra kết quả cập nhật
         if ($result) {
-            // Thêm loại thành công
-            redirect("manage_book.php");
+            //Cập nhật loại thành công
+            echo "<script>
+                        alert ('Cập nhật sách thành công!');
+                        window.location.href = 'manage_book.php';
+                    </script>";
         } else {
-            // Thêm loại không thành công
+            // Cập nhật loại không thành công
             echo '<script>alert("Cập nhật sách không thành công. Vui lòng kiểm tra lại thông tin.");</script>';
         }
         

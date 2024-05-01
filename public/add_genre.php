@@ -32,7 +32,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             if (!file_exists($file_folder)) {
                 mkdir($file_folder, 0777, true);
             }
-            redirect("manage_genre.php");
+            echo "<script>
+                        alert ('Thêm thể loại thành công!');
+                        window.location.href = 'manage_genre.php';
+                    </script>";
+            
         } else {
             // Thêm loại không thành công
             echo '<script>alert("Thêm loại không thành công. Vui lòng kiểm tra lại thông tin.");</script>';

@@ -36,7 +36,10 @@ if (isset($_GET['id_genre'])) {
             }
 
             // Nếu cập nhật thành công, chuyển hướng về trang quản lý loại
-            redirect("manage_genre.php");
+           echo "<script>
+                        alert ('Cập nhật thể loại thành công!');
+                        window.location.href = 'manage_genre.php';
+                    </script>";
         } else {
             // Nếu cập nhật không thành công, hiển thị thông báo lỗi
             echo '<script>alert("Cập nhật loại không thành công. Vui lòng kiểm tra lại thông tin.");</script>';
