@@ -92,7 +92,7 @@ $(document).ready(function() {
 
     if (genre.length > 0) {
       $('.modal-body').html(
-        `Bạn có muốn xóa thể loại "${genre.text()}" không? Nếu xóa thì tất cả sách thuộc thể loại này cũng sẽ bị xóa.`
+        `Bạn có muốn xóa thể loại "${genre.text()}" không?`
       );
     }
 

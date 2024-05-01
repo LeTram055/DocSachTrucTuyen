@@ -13,12 +13,28 @@ if (isset($_GET['id_genre'])) {
     if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $name_genre = isset($_POST['name_genre']) ? $_POST['name_genre'] : '';
     
+        $old_name_genre = $genre['name_genre'];
+        
         // Cập nhật thông tin loại trong cơ sở dữ liệu
         $sql_update = "UPDATE genre SET name_genre = ? WHERE id_genre = ?";
         $stmt_update = $pdo->prepare($sql_update);
         $result = $stmt_update->execute([$name_genre, $id_genre]);
 
         if ($result) {
+            //Cập nhật tên thư mục
+            $old_image_folder = 'images/' . $old_name_genre;
+            $new_image_folder = 'images/' . $name_genre;
+            $old_file_folder = 'files/' . $old_name_genre;
+            $new_file_folder = 'files/' . $name_genre;
+
+            if (file_exists($old_image_folder)) {
+            rename($old_image_folder, $new_image_folder);
+            }
+            
+            if (file_exists($old_file_folder)) {
+                rename($old_file_folder, $new_file_folder);
+            }
+
             // Nếu cập nhật thành công, chuyển hướng về trang quản lý loại
             redirect("manage_genre.php");
         } else {

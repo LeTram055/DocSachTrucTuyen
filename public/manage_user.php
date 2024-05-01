@@ -103,13 +103,13 @@ include_once __DIR__. '/../src/partials/header_ad.php'
                         </thead>
                         <tbody class="table-group-divider">
                             <?php foreach ($rows as $row) : ?>
-                            <?php if ($row['role'] == "admin") continue?>
+
                             <tr>
                                 <td><?= html_escape($row['email']) ?></td>
                                 <td><?= html_escape($row['fullname']) ?></td>
                                 <td>
                                     <div class="d-flex justify-content-center">
-
+                                        <?php if($row['role'] !== 'admin'): ?>
                                         <form class="form-inline mx-1" action="/delete_user.php" method="POST">
                                             <input type="hidden" name="email" value="<?= $row['email'] ?>">
                                             <button id="delete-user-btn" type="button"
@@ -118,6 +118,7 @@ include_once __DIR__. '/../src/partials/header_ad.php'
                                                 <i class="fa-solid fa-trash"></i>
                                             </button>
                                         </form>
+                                        <?php endif; ?>
                                     </div>
 
                                 </td>
