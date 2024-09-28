@@ -5,9 +5,9 @@
   - Thêm vào yêu thích
   - Xem sách đã đọc
   - Chọn chế độ nền tối
-  - ....
+  - Bình luận về sách đã đọc
 * Dành cho quản trị viên
   - Quản lý loại sách
   - Quản lý sách
   - Quản lý người đọc
-  - ...
+  - Quản lý sách
